@@ -36,7 +36,7 @@ class CharTest {
     void testCharFar() {
          chr = new Char("show sl sad pioneer far at left");
          assertEquals(chr.getName(), "sl");
-         assertEquals(chr.getPosition(), "right");
+         assertEquals(chr.getPosition(), "left");
          assertEquals(chr.getLocation(), "far");
          assertEquals(chr.getEmotion(), "sl_3_sad");
          assertEquals(chr.getDress(), "sl_3_pioneer");
@@ -62,7 +62,7 @@ class CharTest {
          assertEquals(chr.getLocation(), "normal");
          assertEquals(chr.getEmotion(), "mt_1_smile");
          assertEquals(chr.getDress(), "mt_1_pioneer");
-         assertEquals(chr.getThing(), "panama");
+         assertEquals(chr.getThing(), "mt_1_panama");
          assertEquals(chr.getBehind(), "null");
     }
     @Test
@@ -73,7 +73,7 @@ class CharTest {
          assertEquals(chr.getLocation(), "far");
          assertEquals(chr.getEmotion(), "mt_1_normal");
          assertEquals(chr.getDress(), "mt_1_pioneer");
-         assertEquals(chr.getThing(), "panama");
+         assertEquals(chr.getThing(), "mt_1_panama");
          assertEquals(chr.getBehind(), "null");
     }
 

@@ -1,7 +1,5 @@
 package com.novelasgame.novelas.entity;
 
-import java.util.HashMap;
-
 import lombok.Data;
 
 @Data
@@ -9,19 +7,19 @@ public class Scene {
     private final String type = "scene";
     private String folder = "null";
     private String name = "null";
-//    private HashMap<String, String> style = new HashMap<>();
+    private String style = "";
 
     public Scene(){}
     public Scene(String str) {
         String[] arr = str.split(" ");
-        if (arr.length == 2) {}
-//            style.put("background", arr[1]);
+        if (arr.length == 2) 
+            style=arr[1];
         else {
-            if (arr[2] != "black") {
-                this.folder = arr[1];
-                this.name = arr[2];
+            if (arr[2].contains("black")) {
+                style=arr[2];
             } else {
-//                style.put("background", arr[2]);
+                this.name = arr[2];
+                this.folder = arr[1];
             }
         }
     }
@@ -47,10 +45,11 @@ public class Scene {
         sc = new Scene("scene anim prolog_1");
         System.out.println(sc.toString());
     }
-
     @Override
     public String toString() {
-        return "type=" + type + "&folder=" + folder + "&name=" + name;// + "&style=" + style;
+        return "type=" + type + "&folder=" + folder + "&name=" + name + "&style=" + style;
     }
+
+
 
 }
