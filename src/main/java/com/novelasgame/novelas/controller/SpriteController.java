@@ -24,7 +24,7 @@ public class SpriteController {
     //http://localhost:8080/images/char?type=char&body=dv_1_body&name=dv&emotion=dv_1_scared&dress=dv_1_pioneer2&position=right&location=normal&behind=null&thing=null
     @ResponseBody
     @GetMapping(value = "/char.png", produces = MediaType.IMAGE_PNG_VALUE)
-    private byte[] three(@ModelAttribute Char chr) throws IOException {
+    private byte[] getChar(@ModelAttribute Char chr) throws IOException {
         
     
         BufferedImage img1 = ImageIO.read(new File("gameRes/summer/char/" + chr.getName() + SPLITTER + chr.getBody()+PNG));
