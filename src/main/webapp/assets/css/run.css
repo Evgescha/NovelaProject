@@ -84,20 +84,3 @@ body {
     cursor: pointer;
     color: #fff;
 }
-
-#mainMenuButton {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 48px;
-    height: 48px;
-    background: url(../images/menu.png) no-repeat center center;
-    opacity: 0.25;
-    -moz-opacity: 0.25;
-    -khtml-opacity: 0.25;
-}
-#mainMenuButton:hover {
-    opacity: 1;
-    -moz-opacity: 1;
-    -khtml-opacity: 1;
-}

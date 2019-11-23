@@ -5,25 +5,88 @@
     <title>Play Scene</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/run.css">
+<!--     <link rel="stylesheet" type="text/css" href="/css/run.css"> -->
+
+<style>
+body{
+	margin: 0;
+	padding: 0;
+}
+.game{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.background1{
+	background: black;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: none;
+}
+.background2{
+	background: red;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: none;
+}
+.sprites{
+	height: 100%;
+}
+.sprite{
+    height: inherit;
+	position: absolute;
+}
+.spriteLeft{
+	left:0;
+}
+.spriteCLeft{
+	left: 25%;
+	transform: translate(-20%,0%);
+}
+.spriteCenter{
+	left: 0;
+    right: 0;
+    margin: auto;
+}
+.spriteCRight{
+	right: 25%;
+	transform: translate(20%,0%);
+}
+.spriteRight{
+	right: 0;
+}
+.window{}
+.textAuthor{}
+.textContent{}
+.menu{}
+.menuTitle{}
+.menuChoose{}
+</style>
 </head>
 
 <body>
-    <div id="background">
-        <div id="background1" style="background: url('http://rpy.annimon.com/resources/es/bg/ext_dining_hall_away_day.jpg')"></div>
-        <div id="background2" style="display: block; background: url('http://rpy.annimon.com/resources/es/bg/ext_dining_hall_near_day.jpg')"></div>
-        <div id="container">
-            <img class="sprite"  src="http://rpy.annimon.com/resources/es/sprites/mt/normalpioneer.png">
-            <img class="sprite"  src="http://rpy.annimon.com/resources/es/sprites/el/normalpioneer.png">
+    <div class="game">
+        <div class="background1" ></div>
+<!--         style="background: none 0% 0% / cover repeat scroll padding-box border-box rgb(0, 0, 0); display: none;" -->
+        <div class="background2" ></div>
+<!--         style="background: url("") center center / cover no-repeat fixed;" -->
+        <div class="sprites">
+            <img class="sprite spriteLeft"  src="http://localhost:8080/images/char.png?type=char&name=sl&body=sl_1_body&dress=sl_1_pioneer&emotion=sl_1_normal&position=right&location=normal&behind=null&thing=null">
+            <img class="sprite spriteCLeft"  src="http://localhost:8080/images/char.png?type=char&name=dv&body=dv_4_body&dress=dv_4_pioneer&emotion=dv_4_smile&position=center&location=close&behind=null&thing=null">
+            <img class="sprite spriteCenter"  src="http://localhost:8080/images/char.png?type=char&name=sl&body=sl_3_body&dress=sl_3_pioneer&emotion=sl_3_sad&position=center&location=far&behind=null&thing=null">
+            <img class="sprite spriteCRight"  src="http://localhost:8080/images/char.png?type=char&name=el&body=el_1_body&dress=el_1_pioneer&emotion=el_1_normal&position=left&location=normal&behind=sl&thing=null">
+            <img class="sprite spriteRight"  src="http://localhost:8080/images/char.png?type=char&name=mt&body=mt_1_body&dress=mt_1_pioneer&emotion=mt_1_normal&position=cright&location=far&behind=null&thing=mt_1_panama
+">
         </div>
-        <div id="window" >
-            <div id="textAuthor" >Gigigi</div>
-            <div id="textContent">Исчезновение пионеров – это что-то новенькое. ~</div>
+        <div class="window" >
+            <div class="textAuthor" ></div>
+            <div class="textContent"></div>
         </div>
-        <div id="mainMenuButton"></div>
-        <div id="menu" >
-            <p id="menuTitle"></p>
-            <ul id="menuChoose">
+        <div class="menu" >
+            <p class="menuTitle"></p>
+            <ul class="menuChoose">
             </ul>
         </div>
         </div>

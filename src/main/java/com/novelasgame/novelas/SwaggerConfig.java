@@ -1,4 +1,5 @@
-package com.novelasgame.novelas.controller;
+package com.novelasgame.novelas;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +32,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/").setViewName("addDialog");
+        registry.addViewController("/TestChar").setViewName("TestChar");
 //        registry.addViewController("").setViewName("addDialog");
 //        registry.addViewController("/testDialogText").setViewName("testDialogText");
     }
