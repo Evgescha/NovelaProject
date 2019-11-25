@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SestSounds</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>NovelasGame</h2>
+
+        <h3 class="group">Тестим все, что видим..</h3>
+
+
+       
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function()
+    		{
+    		   
+    		 
+    		    $.ajax({ 
+    		 
+    		      url: "/sound/get?type=sound&folder=ambience&name=camp_center_day&fade=0&play=true&sound_loop=false", 
+    		       	method: "GET", // Что бы воспользоваться POST методом, меняем данную строку на POST   
+    		       	success: function(data) {
+    					
+    		 		console.log(data); // Возвращаемые данные выводим в консоль
+    		       } 
+    		 });
+    		}); 
+    </script>
+</body>
+
+</html>
