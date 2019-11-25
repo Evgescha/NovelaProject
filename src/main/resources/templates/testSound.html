@@ -17,25 +17,58 @@
 
         <h3 class="group">Тестим все, что видим..</h3>
 
-
+		<button class="play">Play</button>
+		<button class="p1">+</button>
+		<button class="p2">-</button>
        
     </div>
     <script type="text/javascript">
-    $(document).ready(function()
-    		{
-    		   
-    		 
-    		    $.ajax({ 
-    		 
-    		      url: "/sound/get?type=sound&folder=ambience&name=camp_center_day&fade=0&play=true&sound_loop=false", 
-    		       	method: "GET", // Что бы воспользоваться POST методом, меняем данную строку на POST   
-    		       	success: function(data) {
-    					
-    		 		console.log(data); // Возвращаемые данные выводим в консоль
-    		       } 
-    		 });
-    		}); 
+    var i=0;
+    let urr = [
+    	"type=sound&folder=music&name=a_promise_from_distant_days_v2&fade=3&play=true&sound_loop=false",
+    	"type=sound&folder=sfx&name=bus_idle&fade=0&play=true&sound_loop=true",
+    	"type=sound&folder=sfx&name=broom_sweep&fade=2&play=true&sound_loop=true",
+    	"type=sound&folder=sfx&name=intro_bus_stop_steps&fade=0&play=true&sound_loop=false",
+    	"type=sound&folder=sfx&name=bush_leaves&fade=0&play=true&sound_loop=false",
+    	"type=sound&folder=ambience&name=camp_center_day&fade=0&play=true&sound_loop=false",
+    	"type=sound&folder=ambience&name=cold_wind_loop&fade=3&play=true&sound_loop=false"
+    	];
+    
+    $( ".play" ).click(function() {    	
+  	  getRes(urr[i]);
+  	  i=i+1;
+  	});
+    $( ".p1" ).click(function() {    	
+    	 var volume = $(".audioDemo").prop("volume")+0.2;
+    	    if(volume >1){
+    	        volume = 1;
+    	    }
+    	    $(".audioDemo").prop("volume",volume);
+  	});
+    $( ".p2" ).click(function() {    	
+    	var volume = $(".audioDemo").prop("volume")-0.2;
+        if(volume <0){
+            volume = 0;
+        }
+        $(".audioDemo").prop("volume",volume);
+  	});
+    
+    
+    
+    function getRes(urls){
+	    $.ajax({ 	 
+	      url: "/sound/get?"+urls, 
+	       	method: "GET", // Что бы воспользоваться POST методом, меняем данную строку на POST   
+	       	success: function(data) {
+				
+	 		console.log(data); // Возвращаемые данные выводим в консоль
+	 		$("audio").attr("src",data);
+	 		$("audio").trigger('play');
+	       } 
+	 });
+    }
     </script>
+    <audio class="audioDemo" src="gameResSound/summer/sound/ambience/camp_center_day.ogg" controls="controls"></audio>
 </body>
 
 </html>

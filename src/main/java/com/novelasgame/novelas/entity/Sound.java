@@ -38,11 +38,12 @@ public class Sound {
                 fade=arr.length==5?Integer.parseInt( arr[4]):0;                
             } else if (arr[1].contains("ambience")) {
                 this.folder=arr[1];
-                this.name=arr[2].replace("ambience_", "");
+                this.name=arr[2];
                 play=true;
                 sound_loop=false;
                 fade=arr.length==5?Integer.parseInt( arr[4]):0;   
             }
+            this.name=name.replace("ambience_", "").replace("sfx_", "");
         }
         // stop
         else {
