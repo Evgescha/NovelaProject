@@ -88,6 +88,7 @@ public class Char {
          char1 = new Char("show mt normal panama pioneer far at cright");
         System.out.println(char1);
     }
+    
     @Override
     public String toString() {
         return "type=" + type + "&name=" + name + "&body=" + body + "&dress=" + dress + "&emotion=" + emotion

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Play Scene</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--     <link rel="stylesheet" type="text/css" href="/css/run.css"> -->
+
+<style>
+body{
+	margin: 0;
+	padding: 0;
+}
+.game{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.background1{
+	background: black;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+/* 	display: none; */
+}
+.background2{
+	background: red;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-image: url("http://localhost:8080/scene/get?type=scene&folder=cg&name=d1_grasshopper");
+	background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.sprites{
+	height: 100%;
+}
+.sprite{
+    height: inherit;
+	position: absolute;
+}
+.spriteLeft{
+	left:0;
+}
+.spriteCLeft{
+	left: 25%;
+	transform: translate(-20%,0%);
+}
+.spriteCenter{
+	left: 0;
+    right: 0;
+    margin: auto;
+}
+.spriteCRight{
+	right: 25%;
+	transform: translate(20%,0%);
+}
+.spriteRight{
+	right: 0;
+}
+.window{}
+.textAuthor{}
+.textContent{}
+.menu{}
+.menuTitle{}
+.menuChoose{}
+</style>
+</head>
+
+<body>
+    <div class="game">
+        <div class="background1" ></div>
+<!--         style="background: none 0% 0% / cover repeat scroll padding-box border-box rgb(0, 0, 0); display: none;" -->
+        <div class="background2" ></div>
+<!--         style="background: url("") center center / cover no-repeat fixed;" -->
+        <div class="sprites">
+            <img class="sprite"  src="">
+        </div>
+        <div class="window" >
+            <div class="textAuthor" ></div>
+            <div class="textContent"></div>
+        </div>
+        <div class="menu" >
+            <p class="menuTitle"></p>
+            <ul class="menuChoose">
+            </ul>
+        </div>
+   </div>
+        
+<script>
+	var data = "[[${scenario}]]";
+// 	alert(data);
+	var data1=data.replace(/(&quot\;)/g, "\"");
+	console.log(data1);
+	var arr = JSON.parse(data1);
+	console.log(arr[0]);
+	var temp = arr[0];
+	
+	console.log(temp["name"]);
+// 	console.log(data[0]["text"]);
+// 	alert(data1);
+// 	alert(arr[0]);
+// 	console.log("sss");
+// 	console.log(arr);
+</script>
+</body>
+</html>
