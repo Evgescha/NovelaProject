@@ -83,3 +83,6 @@ body{
 .menu{}
 .menuTitle{}
 .menuChoose{}
+.audio{
+	display: none;
+}

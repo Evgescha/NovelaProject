@@ -40,11 +40,17 @@ public class TestRunController {
 //        list.add(new Dialog("th \"Но вряд ли я найду разгадку в полях и лесах, а это чёртово ведро с гайками – единственное, что хоть как-то связывает меня с реальным миром.\""));
         
         
-        list.add(new Scene("scene bg ext_road_day"));
-        list.add(new Scene("scene bg ext_houses_day"));
-        list.add(new Scene("scene cg d1_rena_sunset"));
-        list.add(new Scene("scene cg d1_grasshopper"));
-        list.add(new Scene("scene anim intro_16"));
+//        list.add(new Scene("scene bg ext_road_day"));
+//        list.add(new Scene("scene bg ext_houses_day"));
+//        list.add(new Scene("scene cg d1_rena_sunset"));
+//        list.add(new Scene("scene cg d1_grasshopper"));
+//        list.add(new Scene("scene anim intro_16"));
+        
+        list.add(new Sound("play music music_list[\"a_promise_from_distant_days_v2\"] fadein 10"));
+        list.add(new Sound("stop music fadeout 6"));
+        list.add(new Sound("play sound sfx_intro_bus_stop_steps"));
+        list.add(new Sound("play ambience ambience_camp_center_day"));
+        list.add(new Sound("play ambience ambience_cold_wind_loop fadein 3"));
         
         String temp = toJson(list);
         System.out.println(temp);
