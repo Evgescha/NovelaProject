@@ -23,7 +23,7 @@ body{
 	background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    background: black;
+/*     background: black; */
 }
 .sprites{
 	height: 100%;

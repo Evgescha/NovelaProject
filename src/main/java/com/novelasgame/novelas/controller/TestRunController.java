@@ -33,12 +33,18 @@ public class TestRunController {
 //        list.add(new Char("show el normal pioneer at left behind sl"));
 //        list.add(new Char("show mt normal panama pioneer far at cleft"));
 
-        list.add(new Dialog("\"Последние несколько лет я просто целыми днями сидел за компьютером.\""));
-        list.add(new Dialog("\"На улицу я практически не выхожу, а всё моё общение с людьми сводится к интернет-переписке с {i}анонимами{/i}, у которых нет ни реального имени, ни пола, ни возраста.\""));
-        list.add(new Dialog("th \"Конечно, страшно.\""));
-        list.add(new Dialog("th \"Судя по статуям пионеров, наверное, детский лагерь.{w} Причем лагерь действующий!\""));
-        list.add(new Dialog("th \"Но вряд ли я найду разгадку в полях и лесах, а это чёртово ведро с гайками – единственное, что хоть как-то связывает меня с реальным миром.\""));
+//        list.add(new Dialog("\"Последние несколько лет я просто целыми днями сидел за компьютером.\""));
+//        list.add(new Dialog("\"На улицу я практически не выхожу, а всё моё общение с людьми сводится к интернет-переписке с {i}анонимами{/i}, у которых нет ни реального имени, ни пола, ни возраста.\""));
+//        list.add(new Dialog("th \"Конечно, страшно.\""));
+//        list.add(new Dialog("th \"Судя по статуям пионеров, наверное, детский лагерь.{w} Причем лагерь действующий!\""));
+//        list.add(new Dialog("th \"Но вряд ли я найду разгадку в полях и лесах, а это чёртово ведро с гайками – единственное, что хоть как-то связывает меня с реальным миром.\""));
         
+        
+        list.add(new Scene("scene bg ext_road_day"));
+        list.add(new Scene("scene bg ext_houses_day"));
+        list.add(new Scene("scene cg d1_rena_sunset"));
+        list.add(new Scene("scene cg d1_grasshopper"));
+        list.add(new Scene("scene anim intro_16"));
         
         String temp = toJson(list);
         System.out.println(temp);

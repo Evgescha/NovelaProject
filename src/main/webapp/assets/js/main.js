@@ -13,11 +13,17 @@
 		var temp=arr[i];
 	 	if(temp["type"]=="char")addChar(temp);
 	 	if(temp["type"]=="dialog")addDialog(temp);
-	 	
+	 	if(temp["type"]=="scene")addScene(temp);
 	
 		i++;
 	}
 	
+	function addScene(scn){
+		console.log("add Scene");
+		var url = "url(\""+sceneToImage(scn)+"\")";
+		console.log(url);
+		$(".background2").css("background-image", url);  
+	}
 	
 	//начать вывод диалога на экран
 	function addDialog(dlg){
@@ -26,7 +32,6 @@
 		dialogCurrent=0;
 		$(".textAuthor").text(dlg["name"]);
 		var text = dlg["text"];
-		console.log(text);
 		$(".textContent").text(text[dialogCurrent]);
 		dialogCount--;		
 		dialogCurrent++;
@@ -35,8 +40,6 @@
 	function nextDialog(dlg){
 		console.log("next dialog");
 		var text = dlg["text"];
-		console.log(dialogCurrent);
-		console.log(dialogCurrent);
 		$(".textContent").text($(".textContent").text()+text[dialogCurrent]);
 		dialogCount--;
 		dialogCurrent++;
@@ -67,4 +70,15 @@
 		tempSrc=tempSrc.substring(0, tempSrc.length - 1)
 		return tempSrc;
 	}
+
 	
+	//получение пути к фону
+	//!!!!позже обновить до передачи параметров не в строке
+	function sceneToImage(scn){
+		var tempSrc="/scene/get?";
+		for (var i in scn) {
+			tempSrc+=i +"="+scn[i]+"&";
+	    }
+		tempSrc=tempSrc.substring(0, tempSrc.length - 1)
+		return tempSrc;
+	}
