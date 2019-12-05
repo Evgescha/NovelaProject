@@ -17,11 +17,8 @@ import com.novelasgame.novelas.entity.Scene;
 public class SceneService {
 
     public byte[] getSceneByte(Scene scn) throws IOException {
-        // if(!scn.getName().contains("null")&&!scn.getFolder("null")&&!scn.getStyle().get("background").contains("black"))
         BufferedImage img;
-        if (scn.getName().contains("black") || scn.getName().contains("null")) {// &&
-                                                                                // scn.getStyle().get("background").contains("black"))
-                                                                                // {
+        if (scn.getName().contains("black") || scn.getName().contains("null")) {
             img = new BufferedImage(300, 300, BufferedImage.TYPE_INT_ARGB);
             Graphics gr = img.getGraphics();
             gr.setColor(Color.BLACK);

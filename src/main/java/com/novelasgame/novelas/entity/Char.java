@@ -28,6 +28,7 @@ public class Char {
 
     public Char() {};
     public Char(String line) {
+        line=line.trim();
         //часть имени до картинки, отвечающая за позу
         String namePrev="";
         //получаем эмоцию и имя
@@ -77,7 +78,7 @@ public class Char {
     }
 
     public static void main(String[] args) {
-        Char char1 = new Char("show sl normal pioneer at right");
+        Char char1 = new Char("show un surprise pioneer far at left");
         System.out.println(char1);
          char1 = new Char("show dv smile pioneer close at center");
         System.out.println(char1);

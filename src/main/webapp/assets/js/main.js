@@ -4,7 +4,7 @@ let i = 0;
 let dialogCount = 0;
 let dialogCurrent = 0;
 
-var intervalID;
+var intervalUp, intervalDown;
 
 // кнопка дальше по сценарию
 function next() {
@@ -14,6 +14,7 @@ function next() {
 		return;
 	}
 	var temp = arr[i];
+	console.log(arr[i]);
 	if (temp["type"] == "char")
 		addChar(temp);
 	if (temp["type"] == "dialog")
@@ -22,7 +23,28 @@ function next() {
 		addScene(temp);
 	if (temp["type"] == "sound")
 		addSound(temp);
+	if (temp["type"] == "window")
+		windowww(temp);
+	if (temp["type"] == "hide")
+		hide(temp);
 	i++;
+}
+
+
+// удаление персонажей с экрана
+function hide(hd){
+	$("."+hd["name"]).remove();
+}
+
+// показ и сокрытие окна диалога
+function windowww(wnd) {
+	if (wnd["show"] == true) {
+		$( ".window" ).removeClass( "hide" ).addClass("show");
+	} else {
+		$( ".window" ).removeClass( "show" ).addClass("hide");
+		$(".textAuthor").text("");
+		$(".textContent").text("");
+	}
 }
 
 function addSound(snd) {
@@ -30,15 +52,16 @@ function addSound(snd) {
 	if (snd["play"] == true) {
 		var url = objectToUrl(snd, "/sound/get");
 		getSound(url, snd);
-	}else{
-		let vol=0;
+	} else {
+		let vol = 0;
 		if (snd["fade"] != 0) {
 			vol = 100 / snd["fade"];
 		}
-		intervalID = setInterval(soundVolumeDown, 500,vol/2);
+		clearInterval(intervalDown);
+		intervalDown = setInterval(soundVolumeDown, 500, vol / 2);
 	}
 }
-//получаем путь до музыки и включаем ее
+// получаем путь до музыки и включаем ее
 function getSound(urls, snd) {
 	$.ajax({
 		url : urls,
@@ -54,43 +77,46 @@ function getSound(urls, snd) {
 			else
 				document.getElementById("myAudio").loop = false;
 
-			let vol=0;
+			let vol = 0;
 			$(".audio").prop("volume", 1);
 			if (snd["fade"] != 0) {
 				$(".audio").prop("volume", 0);
 				vol = 100 / snd["fade"];
 			}
 			$('audio').trigger("play");
-			intervalID = setInterval(soundVolumeUp, 500,vol/2);
+			clearInterval(intervalUp);
+			intervalUp = setInterval(soundVolumeUp, 500, vol / 2);
 
 		}
 	});
 }
-//увеличиваем громкость музыки
+// увеличиваем громкость музыки
 function soundVolumeUp(vol) {
 	var volume = $(".audio").prop("volume") + vol / 100;
 	if (volume > 1)
 		volume = 1;
-	console.log("Volume sound: "+volume);
+	console.log("Volume sound: " + volume);
 	$(".audio").prop("volume", volume);
-	if (volume == 1)
-		clearInterval(intervalID);
+	if (volume > 0.99) {
+		clearInterval(intervalUp);
+
+	}
 }
 
-//уменьшаем громкость и выключаем музыку
+// уменьшаем громкость и выключаем музыку
 function soundVolumeDown(vol) {
 	var volume = $(".audio").prop("volume") - vol / 100;
 	if (volume < 0)
 		volume = 0;
-	console.log("Volume sound: "+volume);
+	console.log("Volume sound: " + volume);
 	$(".audio").prop("volume", volume);
-	if (volume == 0){
-		clearInterval(intervalID);
-		$('audio').trigger("stop");		
+	if (volume <= 0.05) {
+		clearInterval(intervalDown);
+		$('audio').trigger("stop");
 	}
 }
 
-//выводим сцену на экран
+// выводим сцену на экран
 function addScene(scn) {
 	console.log("add Scene");
 	var url = "url(\"" + objectToUrl(scn, "/scene/get") + "\")";
@@ -121,9 +147,10 @@ function nextDialog(dlg) {
 // добавляем персонажа на экран
 function addChar(chr) {
 	console.log("add char");
+//	console.log(chr);
 	// alert(chr["type"]);
 	var imageUrl = objectToUrl(chr, "/images/char");
-	var div = `<img class="sprite ${chr["position"]} ${chr["name"]} ${chr["location"]}"  src="${imageUrl}">`;
+	var div = `<img class="sprite ${chr["name"]} ${chr["position"]} ${chr["location"]}"  src="${imageUrl}">`;
 	// если персонаж существует, заменить
 	if ($("." + chr["name"]).length > 0) {
 		$("." + chr["name"]).replaceWith(div);
