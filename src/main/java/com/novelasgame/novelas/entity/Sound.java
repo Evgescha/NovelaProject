@@ -21,7 +21,7 @@ public class Sound {
             if (arr[1].contains("music")) {
                 this.folder=arr[1];
                 this.name=arr[2].split("\"")[1];
-                this.fade=Integer.parseInt( arr[4]);
+                if (arr.length>3) this.fade=Integer.parseInt( arr[4]);
                 play=true;
                 sound_loop=false;
             } else if (arr[1].contains("sound_loop")) {
@@ -56,7 +56,7 @@ public class Sound {
 
     public static void main(String[] args) {
        Sound sd;
-       sd= new Sound("play music music_list[\"a_promise_from_distant_days_v2\"] fadein 3");
+       sd= new Sound("play music music_list[\"a_promise_from_distant_days\"]");
        System.out.println(sd);
        sd= new Sound("play sound_loop sfx_bus_idle");
        System.out.println(sd);

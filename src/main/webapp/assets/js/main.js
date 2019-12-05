@@ -122,6 +122,7 @@ function addScene(scn) {
 	var url = "url(\"" + objectToUrl(scn, "/scene/get") + "\")";
 	console.log(url);
 	$(".background2").css("background-image", url);
+	$(".sprite").remove();
 }
 
 // начать вывод диалога на экран
