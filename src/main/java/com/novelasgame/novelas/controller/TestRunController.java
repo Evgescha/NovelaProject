@@ -8,10 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.novelasgame.novelas.entity.Char;
 import com.novelasgame.novelas.entity.Dialog;
+import com.novelasgame.novelas.entity.Scene;
+import com.novelasgame.novelas.entity.Sound;
 
 @Controller
 @RequestMapping("/testrun")
@@ -21,17 +25,33 @@ public class TestRunController {
 
     @GetMapping
     private String getScene(Model model) throws IOException {
+        ArrayList<Object> list = new ArrayList<>();
+//        list.add(new Char("show dv smile pioneer close at center"));
+//        list.add(new Char("show dv smile pioneer close at left"));
+//        list.add(new Char("show sl normal pioneer at right"));
+//        list.add(new Char("show sl sad pioneer far at cright"));
+//        list.add(new Char("show el normal pioneer at left behind sl"));
+//        list.add(new Char("show mt normal panama pioneer far at cleft"));
+
+        list.add(new Dialog("\"Последние несколько лет я просто целыми днями сидел за компьютером.\""));
+        list.add(new Dialog("\"На улицу я практически не выхожу, а всё моё общение с людьми сводится к интернет-переписке с {i}анонимами{/i}, у которых нет ни реального имени, ни пола, ни возраста.\""));
+        list.add(new Dialog("th \"Конечно, страшно.\""));
+        list.add(new Dialog("th \"Судя по статуям пионеров, наверное, детский лагерь.{w} Причем лагерь действующий!\""));
+        list.add(new Dialog("th \"Но вряд ли я найду разгадку в полях и лесах, а это чёртово ведро с гайками – единственное, что хоть как-то связывает меня с реальным миром.\""));
         
-        ArrayList<String> list= new ArrayList<>();
-        list.add(new Dialog("dreamgirl \"Ты пойдёшь со мной?\"").toString());
-        list.add(new Dialog("\"Пойду?..\"").toString());
-        list.add(new Dialog("\"Но куда?\"").toString());
-        list.add(new Dialog("\"И зачем?..\"").toString());
-        list.add(new Dialog("\"Но это – всего лишь сон.{w} Тот самый, который я вижу каждую ночь.\"").toString());
-        list.add(new Dialog("\"Но вот картинка теряет чёткость...{w} Наверное, скоро просыпаться.\"").toString());
-        String temp= mapper.writeValueAsString(list);
+        
+        String temp = toJson(list);
         System.out.println(temp);
         model.addAttribute("scenario", temp);
         return "testRun";
     }
+
+    private String toJson(Object temp) throws JsonProcessingException {
+        return mapper.writeValueAsString(temp);
+    }
+    // @GetMapping("/get")
+    // @ResponseBody
+    // private String getJsonData() throws JsonProcessingException {
+    // return mapper.writeValueAsString(list);
+    // }
 }

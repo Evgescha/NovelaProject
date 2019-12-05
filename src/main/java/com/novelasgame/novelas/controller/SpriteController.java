@@ -1,11 +1,6 @@
 package com.novelasgame.novelas.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,29 +22,10 @@ public class SpriteController {
 
     // http://localhost:8080/images/char?type=char&body=dv_1_body&name=dv&emotion=dv_1_scared&dress=dv_1_pioneer2&position=right&location=normal&behind=null&thing=null
     @ResponseBody
-    @GetMapping(value = "/char.png", produces = MediaType.IMAGE_PNG_VALUE)
+    @GetMapping(value = "/char", produces = MediaType.IMAGE_PNG_VALUE)
     private byte[] getChar(@ModelAttribute Char chr) throws IOException {
         return charService.getImageByte(chr);
     }
 }
 
-/*
- * @ResponseBody
- * 
- * @GetMapping(value = "/char", produces = MediaType.IMAGE_PNG_VALUE) private
- * byte[] three(Model model,
- * 
- * @RequestParam("name") String name,
- * 
- * @RequestParam("emotion") String emotion,
- * 
- * @RequestParam("dres") String dres,
- * 
- * @RequestParam("position") String position,
- * 
- * @RequestParam("location") String location,
- * 
- * @RequestParam(value = "behind", required = false) String behind,
- * 
- * @RequestParam(value = "thing", required = false) String thing
- */
+

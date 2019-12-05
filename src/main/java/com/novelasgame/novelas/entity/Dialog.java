@@ -1,7 +1,5 @@
 package com.novelasgame.novelas.entity;
 
-import java.util.Arrays;
-
 import lombok.Data;
 
 @Data
@@ -15,20 +13,18 @@ public class Dialog {
         String[] arr=str.split(" \"");
         
         if (str.charAt(0) == '"') {
-            text=str.replace("\"", "").split("<w>");
+            text=str.replace("\"", "").split("\\{w\\}");
         }
         if (arr.length > 1) {
             name=arr[0];
-            text=arr[1].replace("\"", "").split("<w>");
+            text=arr[1].replace("\"", "").split("\\{w\\}");
         }                    
     }
     
-//  @Override
-//  public String toString() {
-//      return "type=" + type + "&name=" + name + "&fullName=" + fullName + "&text=" + Arrays.toString(text);
-//  }
-    
-
+//    @Override
+//    public String toString() {
+//        return "type=" + type + "&name=" + name + "&fullName=" + fullName + "&text=" + Arrays.toString(text);
+//    }
     public static void main(String[] args) {
         Dialog dlg;
         dlg=new Dialog("\"Я окончательно захлебнулся рыданиями и просто тихо лежал, изредка поскуливая.\"");
@@ -40,10 +36,4 @@ public class Dialog {
         dlg=new Dialog("th \"На опыты тоже не похоже.\"");
         System.out.println(dlg);
     }
-    @Override
-    public String toString() {
-        return "{\"type\":\"" + type + "\", \"name\":\"" + name + "\", \"fullName\":\"" + fullName + "\", \"text\":\""
-                + Arrays.toString(text) + "\"}";
-    }
-
 }

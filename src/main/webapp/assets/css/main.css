@@ -1,0 +1,85 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+.game{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.background1{
+	background: black;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+/* 	display: none; */
+}
+.background2{
+	background: red;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-image: url("http://localhost:8080/scene/get?type=scene&folder=cg&name=d1_grasshopper");
+	background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background: black;
+}
+.sprites{
+	height: 100%;
+}
+.sprite{
+    height: inherit;
+	position: absolute;
+}
+
+/* position */
+.left{
+	left:0;
+}
+.cleft{
+	left: 25%;
+	transform: translate(-20%,0%);
+}
+.center{
+	left: 0;
+    right: 0;
+    margin: auto;
+}
+.cright{
+	right: 25%;
+	transform: translate(20%,0%);
+}
+.right{
+	right: 0;
+}
+
+/* location */
+.far{
+	
+}
+.close{
+	
+}
+
+
+
+.window{
+	width: 80%;
+    height: 300px;
+    position: absolute;
+    background: red;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+}
+.textAuthor{
+	color: white;
+}
+.textContent{
+	color: white;
+}
+.menu{}
+.menuTitle{}
+.menuChoose{}

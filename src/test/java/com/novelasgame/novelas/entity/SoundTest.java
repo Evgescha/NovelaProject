@@ -21,7 +21,7 @@ class SoundTest {
     void testSoundSoundLoop() {
         sd= new Sound("play sound_loop sfx_bus_idle");
         assertEquals(sd.getFolder(), "sfx");
-        assertEquals(sd.getName(), "sfx_bus_idle");
+        assertEquals(sd.getName(), "bus_idle");
         assertEquals(sd.getFade(), 0);
         assertTrue(sd.getPlay());
         assertTrue(sd.getSoundLoop());
@@ -30,7 +30,7 @@ class SoundTest {
     void testSoundSoundLoopFade() {
         sd= new Sound("play sound_loop sfx_broom_sweep fadein 2");
         assertEquals(sd.getFolder(), "sfx");
-        assertEquals(sd.getName(), "sfx_broom_sweep");
+        assertEquals(sd.getName(), "broom_sweep");
         assertEquals(sd.getFade(), 2);
         assertTrue(sd.getPlay());
         assertTrue(sd.getSoundLoop());
@@ -39,7 +39,7 @@ class SoundTest {
     void testSoundSound() {
         sd= new Sound("play sound sfx_intro_bus_stop_steps");
         assertEquals(sd.getFolder(), "sfx");
-        assertEquals(sd.getName(), "sfx_intro_bus_stop_steps");
+        assertEquals(sd.getName(), "intro_bus_stop_steps");
         assertEquals(sd.getFade(), 0);
         assertTrue(sd.getPlay());
         assertFalse(sd.getSoundLoop());
@@ -48,7 +48,7 @@ class SoundTest {
     void testSoundFade() {
         sd= new Sound("play sound sfx_bush_leaves fadein 0");
         assertEquals(sd.getFolder(), "sfx");
-        assertEquals(sd.getName(), "sfx_bush_leaves");
+        assertEquals(sd.getName(), "bush_leaves");
         assertEquals(sd.getFade(), 0);
         assertTrue(sd.getPlay());
         assertFalse(sd.getSoundLoop());
@@ -57,7 +57,7 @@ class SoundTest {
     void testSoundAmbience() {
         sd= new Sound("play ambience ambience_camp_center_day");
         assertEquals(sd.getFolder(), "ambience");
-        assertEquals(sd.getName(), "ambience_camp_center_day");
+        assertEquals(sd.getName(), "camp_center_day");
         assertEquals(sd.getFade(), 0);
         assertTrue(sd.getPlay());
         assertFalse(sd.getSoundLoop());
@@ -66,7 +66,7 @@ class SoundTest {
     void testSoundAmbienceFade() {
         sd= new Sound("play ambience ambience_cold_wind_loop fadein 3");
         assertEquals(sd.getFolder(), "ambience");
-        assertEquals(sd.getName(), "ambience_cold_wind_loop");
+        assertEquals(sd.getName(), "cold_wind_loop");
         assertEquals(sd.getFade(), 3);
         assertTrue(sd.getPlay());
         assertFalse(sd.getSoundLoop());
