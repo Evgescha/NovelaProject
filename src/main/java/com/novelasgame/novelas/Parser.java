@@ -13,6 +13,7 @@ import com.novelasgame.novelas.entity.Dialog;
 import com.novelasgame.novelas.entity.Hide;
 import com.novelasgame.novelas.entity.Scene;
 import com.novelasgame.novelas.entity.Sound;
+import com.novelasgame.novelas.entity.Variables;
 import com.novelasgame.novelas.entity.Window;
 
 public class Parser {
@@ -38,10 +39,8 @@ public class Parser {
 
                 if (line.charAt(0) == '"')
                     list.add(new Dialog(line));
-                if (arr.length > 1) {
-                    if (arr[1].charAt(0) == '"')
-                        list.add(new Dialog(line));
-                }
+                if (arr.length > 1 && arr[1].charAt(0) == '"') 
+                    list.add(new Dialog(line));               
                 if (arr[0].contains("stop") || arr[0].contains("play"))
                     list.add(new Sound(line));
                 if (arr[0].contains("scene"))
@@ -50,9 +49,10 @@ public class Parser {
                     list.add(new Window(line));
                 if (arr[0].contains("hide"))
                     list.add(new Hide(line));
-                if (arr.length > 5 && arr[1].charAt(0) != '"' && arr[0].charAt(0) != '"') {
-                    list.add(new Char(line));
-                }
+                if (arr.length > 5 && arr[1].charAt(0) != '"' && arr[0].charAt(0) != '"') 
+                    list.add(new Char(line));                
+                if (line.charAt(0) == '$')
+                    list.add(new Variables(line));
             }
         } catch (IOException ex) {
         }

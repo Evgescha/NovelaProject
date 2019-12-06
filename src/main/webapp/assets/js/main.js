@@ -1,10 +1,15 @@
-//проходим каждый элемент json-массива
+//текущая позиция в сценарии
 let i = 0;
-//
+
+// текущие позиции в тексте диалога
 let dialogCount = 0;
 let dialogCurrent = 0;
 
+// счетчики увеличения/уменьшения громкости звука
 var intervalUp, intervalDown;
+
+// массив переменных
+var variables = new Map();
 
 // кнопка дальше по сценарию
 function next() {
@@ -27,21 +32,34 @@ function next() {
 		windowww(temp);
 	if (temp["type"] == "hide")
 		hide(temp);
+	if (temp["type"] == "variable")
+		addVariable(temp);
 	i++;
 }
 
+// чтение переменных
+function addVariable(vrbl) {
+	variables.set(vrbl["key"], vrbl["value"]);
+	console.log(variables.get(vrbl["key"]));
 
+//	var val = vrbl["value"];
+//	if (val.match(/^\d+$/)) {
+//		val = Number.parseInt(val); // Теперь будет числом
+//		variables.set(vrbl["key"], val+1);
+//		console.log(variables.get(vrbl["key"]));
+//	}
+}
 // удаление персонажей с экрана
-function hide(hd){
-	$("."+hd["name"]).remove();
+function hide(hd) {
+	$("." + hd["name"]).remove();
 }
 
 // показ и сокрытие окна диалога
 function windowww(wnd) {
 	if (wnd["show"] == true) {
-		$( ".window" ).removeClass( "hide" ).addClass("show");
+		$(".window").removeClass("hide").addClass("show");
 	} else {
-		$( ".window" ).removeClass( "show" ).addClass("hide");
+		$(".window").removeClass("show").addClass("hide");
 		$(".textAuthor").text("");
 		$(".textContent").text("");
 	}
