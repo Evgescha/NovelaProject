@@ -39,26 +39,42 @@ function next() {
 
 // чтение переменных
 function addVariable(vrbl) {
+	console.log("Add variable "+vrbl["key"]+":"+vrll["value"]));
 	variables.set(vrbl["key"], vrbl["value"]);
-	console.log(variables.get(vrbl["key"]));
 
-//	var val = vrbl["value"];
-//	if (val.match(/^\d+$/)) {
-//		val = Number.parseInt(val); // Теперь будет числом
-//		variables.set(vrbl["key"], val+1);
-//		console.log(variables.get(vrbl["key"]));
-//	}
+
 }
+// изменение переменной на заданное значение
+function updateNumericVariable(var key, var value){
+	console.log("Update variable "+key+", old:"variables[key]+", add:"+value);
+	var val = variables.get(key);
+		val = Number.parseInt(val); // Теперь будет числом
+		variables.set(key, val+value);
+		console.log("new value: "+variables.get(key);
+// if (val.match(/^\d+$/)) {
+// }
+}
+// изменение не числовых переменных
+function updateNonNumericVariable(var key, var value){
+	console.log("Update variable "+key+", old:"variables[key]+", to:"+value);
+	variables.set(key, value);
+	console.log("new value: "+variables.get(key);
+}
+
+
 // удаление персонажей с экрана
 function hide(hd) {
+	console.log("Char "+hd["name"]+" hide");
 	$("." + hd["name"]).remove();
 }
 
 // показ и сокрытие окна диалога
 function windowww(wnd) {
 	if (wnd["show"] == true) {
+		console.log("window show");
 		$(".window").removeClass("hide").addClass("show");
 	} else {
+		console.log("window hide");
 		$(".window").removeClass("show").addClass("hide");
 		$(".textAuthor").text("");
 		$(".textContent").text("");
