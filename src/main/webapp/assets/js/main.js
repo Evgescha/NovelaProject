@@ -148,8 +148,6 @@ function nextDialog(dlg) {
 // добавляем персонажа на экран
 function addChar(chr) {
 	console.log("add char");
-//	console.log(chr);
-	// alert(chr["type"]);
 	var imageUrl = objectToUrl(chr, "/images/char");
 	var div = `<img class="sprite ${chr["name"]} ${chr["position"]} ${chr["location"]}"  src="${imageUrl}">`;
 	// если персонаж существует, заменить

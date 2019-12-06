@@ -4,14 +4,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 import lombok.Data;
 
 
-//http://localhost:8080/images/char.png?type=char&name=sl&body=sl_1_body&dress=sl_1_pioneer&emotion=sl_1_normal&position=right&location=normal&behind=null&thing=null
 @Data
 public class Char {
+    static Logger logger = Logger.getLogger(Char.class.getName());
     private final String type = "char";
     private String name;
     private String body;
@@ -28,6 +30,9 @@ public class Char {
 
     public Char() {};
     public Char(String line) {
+        logger.fine("Char. Line constructor");
+        logger.log(Level.FINE, "Arguments: ",line);
+        
         line=line.trim();
         //часть имени до картинки, отвечающая за позу
         String namePrev="";
@@ -36,6 +41,7 @@ public class Char {
         this.name = split[1];
         this.emotion = split[2];
         
+        logger.fine("Char. Find pose.");
         // ищем позу по эмоции
         try (Stream<Path> paths = Files.walk(Paths.get("gameRes/summer/char/" + name + "/"))) {
             Path path = paths.filter(Files::isRegularFile).filter(file -> file.toString().contains(this.emotion + ".png"))
@@ -48,28 +54,53 @@ public class Char {
             e.printStackTrace();
         }
         
+        
+        
+        logger.fine("Char. Find behind.");
        //если персонаж стоит за кем-то, получаем имя впередистоящего, команду удаляем
         if (line.contains(" behind ")) {
             this.behind = line.substring(line.lastIndexOf(" ") + 1);
             line = line.substring(0, line.lastIndexOf(" behind "));
         }
+        
+        
+        logger.fine("Char. Find position.");
         //получаем позицию по горизонтали экрана
         this.position = line.substring(line.lastIndexOf(" ") + 1);
         line = line.substring(0, line.lastIndexOf(" at "));
 
+        
+        
+        logger.fine("Char. Find location.");
         //получаем дальность от экрана
         if (line.contains(" far") || line.contains(" close")) {
             this.location = line.substring(line.lastIndexOf(" ") + 1);
             line = line.substring(0, line.lastIndexOf(" "));
         }
+        
+        
+        
+        logger.fine("Char. Find dress.");
         //получаем польное название одежды
         this.dress = namePrev+line.substring(line.lastIndexOf(" ") + 1);
         line = line.substring(0, line.lastIndexOf(" "));
+        
+        
+        
+        logger.fine("Char. Find body.");
         //получаем голое тело
         this.body = namePrev+"body";
+        
+        
+        
+        logger.fine("Char. Find emotion.");
         //дополняем эмоцию полным названием
         split = line.split(" ");
         this.emotion = namePrev+split[2];
+        
+        
+        
+        logger.fine("Char. Find thing.");
         //если есть еще какая-то вещь(панама), указываем ссылку на ее картинку
         if (split.length > 3) {
             this.thing = namePrev+split[3];
@@ -77,23 +108,7 @@ public class Char {
 
     }
 
-    public static void main(String[] args) {
-        Char char1 = new Char("show un surprise pioneer far at left");
-        System.out.println(char1);
-         char1 = new Char("show dv smile pioneer close at center");
-        System.out.println(char1);
-         char1 = new Char("show sl sad pioneer far at center");
-        System.out.println(char1);
-         char1 = new Char("show el normal pioneer at left behind sl");
-        System.out.println(char1);
-         char1 = new Char("show mt normal panama pioneer far at cright");
-        System.out.println(char1);
-    }
-    
-    @Override
-    public String toString() {
-        return "type=" + type + "&name=" + name + "&body=" + body + "&dress=" + dress + "&emotion=" + emotion
-                + "&position=" + position + "&location=" + location + "&behind=" + behind + "&thing=" + thing;
-    }
+
+
 
 }

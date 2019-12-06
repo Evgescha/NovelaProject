@@ -28,13 +28,10 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
         registry.addResourceHandler("/**").addResourceLocations("/assets/");
-//        registry.addResourceHandler("/**").addResourceLocations("gameResSound/");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/TestChar").setViewName("TestChar");
-//        registry.addViewController("").setViewName("addDialog");
-//        registry.addViewController("/testDialogText").setViewName("testDialogText");
     }
 }

@@ -20,7 +20,6 @@ public class SpriteController {
     @Autowired
     private СharacterService charService;
 
-    // http://localhost:8080/images/char?type=char&body=dv_1_body&name=dv&emotion=dv_1_scared&dress=dv_1_pioneer2&position=right&location=normal&behind=null&thing=null
     @ResponseBody
     @GetMapping(value = "/char", produces = MediaType.IMAGE_PNG_VALUE)
     private byte[] getChar(@ModelAttribute Char chr) throws IOException {

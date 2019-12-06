@@ -1,9 +1,13 @@
 package com.novelasgame.novelas.entity;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import lombok.Data;
 
 @Data
 public class Scene {
+    static Logger logger = Logger.getLogger(Scene.class.getName());
     private final String type = "scene";
     private String folder = "null";
     private String name = "null";
@@ -11,6 +15,8 @@ public class Scene {
 
     public Scene(){}
     public Scene(String str) {
+        logger.fine("Scene. Line constructor");
+        logger.log(Level.FINE, "Arguments: ",str);
         String[] arr = str.split(" ");
         if (arr.length == 2) 
             style=arr[1];
@@ -23,32 +29,7 @@ public class Scene {
             }
         }
     }
-    public static void main(String[] args) {
-        
-        Scene sc;
-        sc = new Scene("scene black");
-        System.out.println(sc.toString());
-        sc = new Scene("scene bg black");
-        System.out.println(sc.toString());
-        sc = new Scene("scene bg ext_road_day");
-        System.out.println(sc.toString());
-        sc = new Scene("scene bg ext_houses_day");
-        System.out.println(sc.toString());
-        sc = new Scene("scene cg d1_rena_sunset");
-        System.out.println(sc.toString());
-        sc = new Scene("scene cg d1_grasshopper");
-        System.out.println(sc.toString());
-        sc = new Scene("scene anim intro_16");
-        System.out.println(sc.toString());
-        sc = new Scene("scene anim intro_15");
-        System.out.println(sc.toString());
-        sc = new Scene("scene anim prolog_1");
-        System.out.println(sc.toString());
-    }
-    @Override
-    public String toString() {
-        return "type=" + type + "&folder=" + folder + "&name=" + name + "&style=" + style;
-    }
+
 
 
 

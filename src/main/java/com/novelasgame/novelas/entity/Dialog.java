@@ -1,15 +1,21 @@
 package com.novelasgame.novelas.entity;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import lombok.Data;
 
 @Data
 public class Dialog {
+    static Logger logger = Logger.getLogger(Dialog.class.getName());
     private  final String type="dialog";
     private String name;
     private String fullName;
     private String[] text;
     public Dialog() {}
     public Dialog(String str) {
+        logger.fine("Dialog. Line constructor");
+        logger.log(Level.FINE, "Arguments: ",str);
         String[] arr=str.split(" \"");
         
         if (str.charAt(0) == '"') {
@@ -18,22 +24,8 @@ public class Dialog {
         if (arr.length > 1) {
             name=arr[0];
             text=arr[1].replace("\"", "").split("\\{w\\}");
-        }                    
+        }        
+        logger.log(Level.FINE, "Text for dialog: ",text);
     }
-    
-//    @Override
-//    public String toString() {
-//        return "type=" + type + "&name=" + name + "&fullName=" + fullName + "&text=" + Arrays.toString(text);
-//    }
-    public static void main(String[] args) {
-        Dialog dlg;
-        dlg=new Dialog("\"Я окончательно захлебнулся рыданиями и просто тихо лежал, изредка поскуливая.\"");
-        System.out.println(dlg);
-        dlg=new Dialog("\"Через несколько минут удалось всё-таки взять себя в руки.\"");
-        System.out.println(dlg);
-        dlg=new Dialog("th \"В конце концов, если бы меня хотели убить, зачем всё это?!\"");
-        System.out.println(dlg);
-        dlg=new Dialog("th \"На опыты тоже не похоже.\"");
-        System.out.println(dlg);
-    }
+
 }
