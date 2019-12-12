@@ -37,12 +37,14 @@ function next() {
 	i++;
 }
 
+
+
+
+//!!!!!!!!!!!!!!!!!!!!РАБОТА С ПЕРЕМЕННЫМИ
 // чтение переменных
 function addVariable(vrbl) {
 	console.log("Add variable "+vrbl["key"]+":"+vrbl["value"]);
 	variables.set(vrbl["key"], vrbl["value"]);
-
-
 }
 // изменение переменной на заданное значение
 function updateNumericVariable( key,  value){
@@ -62,12 +64,9 @@ function updateNonNumericVariable( key,  value){
 }
 
 
-// удаление персонажей с экрана
-function hide(hd) {
-	console.log("Char "+hd["name"]+" hide");
-	$("." + hd["name"]).remove();
-}
 
+
+//!!!!!!!!!!!!!РАБОТА С ДИАЛОГОВЫМ ОКНОМ
 // показ и сокрытие окна диалога
 function windowww(wnd) {
 	if (wnd["show"] == true) {
@@ -81,6 +80,9 @@ function windowww(wnd) {
 	}
 }
 
+
+
+//!!!!!!!!!!!!РАБОТА С АУДИО
 function addSound(snd) {
 	console.log("add sound");
 	if (snd["play"] == true) {
@@ -95,6 +97,7 @@ function addSound(snd) {
 		intervalDown = setInterval(soundVolumeDown, 500, vol / 2);
 	}
 }
+
 // получаем путь до музыки и включаем ее
 function getSound(urls, snd) {
 	$.ajax({
@@ -124,6 +127,7 @@ function getSound(urls, snd) {
 		}
 	});
 }
+
 // увеличиваем громкость музыки
 function soundVolumeUp(vol) {
 	var volume = $(".audio").prop("volume") + vol / 100;
@@ -150,6 +154,10 @@ function soundVolumeDown(vol) {
 	}
 }
 
+
+
+
+//!!!!!!!!!!РАБОТА С ФОНОМ
 // выводим сцену на экран
 function addScene(scn) {
 	console.log("add Scene");
@@ -159,6 +167,9 @@ function addScene(scn) {
 	$(".sprite").remove();
 }
 
+
+
+//!!!!!!!!!!!!!!РАБОТА С ДИАЛОГОМ
 // начать вывод диалога на экран
 function addDialog(dlg) {
 	console.log("add dialog");
@@ -170,6 +181,7 @@ function addDialog(dlg) {
 	dialogCount--;
 	dialogCurrent++;
 }
+
 // продолжить вывод диалога, если он состоит более чем из одной части
 function nextDialog(dlg) {
 	console.log("next dialog");
@@ -179,6 +191,10 @@ function nextDialog(dlg) {
 	dialogCurrent++;
 }
 
+
+
+
+//!!!!!!!!!!!!РАБОТА С СПРАЙТОМ
 // добавляем персонажа на экран
 function addChar(chr) {
 	console.log("add char");
@@ -193,7 +209,16 @@ function addChar(chr) {
 		$(".sprites").append(div);
 }
 
-// получение пути к фону
+//удаление персонажей с экрана
+function hide(hd) {
+	console.log("Char "+hd["name"]+" hide");
+	$("." + hd["name"]).remove();
+}
+
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!
+// получение пути по entity
 // !!!!позже обновить до передачи параметров не в строке
 function objectToUrl(obj, url) {
 	var tempSrc = url + "?";
