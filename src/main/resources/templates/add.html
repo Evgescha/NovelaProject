@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Добавить сценарий</title>
+<style type="text/css">
+form {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	margin: auto;
+}
+
+.gameName, .gameLabel, .gameCommands {
+	display: flex;
+	flex-direction: column;
+}
+.gameCommands textarea{
+height: 300px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<form action="/add" method="POST">
+			<div class="gameName">
+				<p>Название игры</p>
+				<input type="text" name="gameName">
+			</div>
+			<div class="gameLabel">
+				<p>Название метки</p>
+				<input type="text" name="gameLabel">
+			</div>
+			<div class="gameCommands">
+				<p>Список комманд</p>
+				<textarea type="text" name="gameCommands"></textarea>
+			</div>
+			<button type="submit">Отправить</button>
+		</form>
+	</div>
+</body>
+</html>

@@ -46,5 +46,8 @@ public class LabelService implements CrudService<Label> {
             return false;
         }
     }
+    public Label findByName(String name) {
+        return repository.findByName(name);
+    }
 
 }

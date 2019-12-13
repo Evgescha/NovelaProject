@@ -49,24 +49,6 @@ public class App {
     public static void main(String[] args) {
         logger.info("Start application");
         SpringApplication.run(App.class, args);
-        Command cmd = new Command();
-        cmd.setValue("NEW COMMAND");
-        Game game = gameService.read(1l);
-        game.getLabels().get(0).getCommands().add(cmd);
-        gameService.update(game);
-        // Command command = new Command();
-        // Label label = new Label();
-        // Game game = new Game();
-        // game.setName("TEST GAME");
-        // command.setValue("TEST COMMAND VALUE");
-        // List<Command> cmds = new ArrayList<>();
-        // List<Label> lbls = new ArrayList<>();
-        // cmds.add(command);
-        // label.setName("TEST NAME");
-        // label.setCommands(cmds);
-        // lbls.add(label);
-        // game.setLabels(lbls);
-        // gameService.create(game);
 
         System.out.println("Hello World!");
     }

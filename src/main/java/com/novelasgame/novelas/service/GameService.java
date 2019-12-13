@@ -46,5 +46,7 @@ public class GameService implements CrudService<Game> {
             return false;
         }
     }
-
+    public Game findByName(String name) {
+        return repository.findByName(name);
+    }
 }
