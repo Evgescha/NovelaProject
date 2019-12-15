@@ -1,5 +1,5 @@
 package com.novelasgame.novelas.entity;
-
+import static org.junit.Assert.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,7 +13,7 @@ class CharTest {
     void testCharSimple() {
         chr = new Char("show sl normal pioneer at right");
         assertEquals(chr.getName(), "sl");
-        assertEquals(chr.getPosition(), "right");
+
         assertEquals(chr.getLocation(), "normal");
         assertEquals(chr.getEmotion(), "sl_1_normal");
         assertEquals(chr.getDress(), "sl_1_pioneer");

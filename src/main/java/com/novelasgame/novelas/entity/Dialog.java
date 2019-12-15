@@ -9,8 +9,8 @@ import lombok.Data;
 public class Dialog {
     static Logger logger = Logger.getLogger(Dialog.class.getName());
     private  final String type="dialog";
-    private String name;
-    private String fullName;
+    private String name="";
+    private String fullName="";
     private String[] text;
     public Dialog() {}
     public Dialog(String str) {
