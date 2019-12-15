@@ -2,42 +2,41 @@
 <html>
 
 <head>
-    <title>Play Scene</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play Scene</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--     <link rel="stylesheet" type="text/css" href="/css/run.css"> -->
-<script  src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="/js/main.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/main.css">
 
 </head>
 
 <body>
-<!-- <button class="next" onclick="next()">NEXT</button> -->
-    <div class="game"  onclick="next()">
-        <div class="background1" ></div>
-        <div class="background2" ></div>
-        <div class="sprites">
-<!--             <img class="sprite"  src=""> -->
-        </div>
-        <div class="window" >
-            <div class="textAuthor" ></div>
-            <div class="textContent"></div>
-        </div>
-        <div class="menu" >
-            <p class="menuTitle"></p>
-            <ul class="menuChoose">
-            </ul>
-        </div>
-        <audio class="audio" id="myAudio" src="#" controls="controls"></audio>
-   </div>
-        
-<script>
-// // получили json-строку с сервера и преобразовали в нормальный json 
-	var data = "[[${scenario}]]";
-	data=data.replace(/(&quot\;)/g, "\"");
-	var arr = JSON.parse(data);
-	
-</script>
+	<!-- <button class="next" onclick="next()">NEXT</button> -->
+	<div class="game" onclick="next()">
+		<div class="background1"></div>
+		<div class="background2"></div>
+		<div class="sprites">
+			<!--             <img class="sprite"  src=""> -->
+		</div>
+		<div class="window">
+			<div class="textAuthor"></div>
+			<div class="textContent"></div>
+		</div>
+		<div class="menu">
+			<p class="menuTitle"></p>
+			<ul class="menuChoose">
+			</ul>
+		</div>
+<!-- 		<audio class="audio" id="myAudio" src="#" controls="controls"></audio> -->
+	</div>
+
+	<script>
+		// получили json-строку с сервера и преобразовали в нормальный json 
+		var data = "[[${scenario}]]";
+		data = data.replace(/(&quot\;)/g, "\"");
+		var arr = JSON.parse(data);
+	</script>
 </body>
 </html>

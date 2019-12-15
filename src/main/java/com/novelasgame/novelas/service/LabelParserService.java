@@ -29,43 +29,44 @@ public class LabelParserService {
 
     public void Parse(String labelName) {
         
-        System.out.println("HELPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
-//        labelName = "prologue";
-//        list.clear();
-//        System.out.println("search: "+labelName);
-//        Game game = gameService.findByName("summer");
-//        Label label = null;
-//        for(Label lbl:game.getLabels()) {
-//            if(lbl.getName().contains(labelName))label=lbl;
-//        }
-//        List<Command> commands = label.getCommands();
-//        String cmd = "";
-//        for (int i = 0; i < commands.size(); i++) {
-////            System.out.println("cmd: "+cmd);
-//            cmd = commands.get(i).getValue().trim();
-//            String[] arr = cmd.split(" ");
-//
-//            if (arr[0].contains("menu")) {
-//                i++;
-//                Menu menu = new Menu();
-//
-//                while (cmd.charAt(0) == ' ') {
-//                    cmd = commands.get(i).getValue();
-//                    if (cmd.charAt(3) != ' ') {
-//                        menu.getItems().add(new MenuItem(cmd));
-//                    } else {
-//                        menu.getItems().get(menu.getItems().size() - 1).getCommands().add(getCommand(cmd));
-//                    }
-//                    i++;
-//                }
-//                i--;
-//                list.add(menu);
-//
-//            } else
-//                list.add(getCommand(cmd));
-//
-//        }
-//        for(Object o:list)System.out.println(o);
+        labelName = "prologue";
+        list.clear();
+        System.out.println("search: "+labelName);
+        Game game = gameService.findByName("summer");
+        Label label = null;
+        for(Label lbl:game.getLabels()) {
+            if(lbl.getName().contains(labelName))label=lbl;
+        }
+        List<Command> commands = label.getCommands();
+        String cmd = "";
+        for (int i = 0; i < commands.size(); i++) {
+            System.out.println("cmd:"+commands.get(i).getValue());
+            cmd = commands.get(i).getValue().trim();
+            String[] arr = cmd.split(" ");
+
+            if (arr[0].contains("menu")) {
+                i++;
+                Menu menu = new Menu();
+                cmd = commands.get(i).getValue().replace("\t", "    ");
+                while (cmd.charAt(0) == ' ') {
+                    System.out.println(cmd);
+                    if (cmd.charAt(4) != ' ') {
+                        menu.getItems().add(new MenuItem(cmd.trim()));
+                    } 
+                    else {
+                        menu.getItems().get(menu.getItems().size() - 1).getCommands().add(getCommand(cmd.trim()));
+                    }
+                    i++;
+                    cmd = commands.get(i).getValue().replace("\t", "    ");
+                }
+                i--;
+                list.add(menu);
+
+            } else
+                list.add(getCommand(cmd));
+
+        }
+        for(Object o:list)System.out.println(o);
     }
 
     public Object getCommand(String cmd) {
