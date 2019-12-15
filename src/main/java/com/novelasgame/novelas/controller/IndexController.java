@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class IndexController {
     @GetMapping()
-    private String one(Model model) {        
-        return "/index";
+    private String one(Model model) {     
+        System.out.println("view index scene");
+        return "index";
     }
 }

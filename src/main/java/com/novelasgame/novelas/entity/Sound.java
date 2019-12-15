@@ -78,4 +78,8 @@ public class Sound {
         this.sound_loop = sound_loop;
     }
 
+    public static void main(String[] args) {
+        Sound sound = new Sound("play music music_list[\"a_promise_from_distant_days_v2\"] fadein 3");
+    }
+    
 }

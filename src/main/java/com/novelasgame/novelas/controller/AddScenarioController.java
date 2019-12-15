@@ -19,6 +19,7 @@ public class AddScenarioController {
 
     @GetMapping()
     private String getAddScenario() {
+        System.out.println("View add scene");
         return "add";
     }
 

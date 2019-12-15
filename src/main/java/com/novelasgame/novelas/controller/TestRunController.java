@@ -1,6 +1,5 @@
 package com.novelasgame.novelas.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +19,18 @@ public class TestRunController {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping
-    private String getScene(Model model) throws IOException {
+    private String getScene(Model model) {
         ArrayList<Object> list = new ArrayList<>();
         list = Parser.getList();
         
         
-        String temp = toJson(list);
+        String temp="";
+        try {
+            temp = toJson(list);
+        } catch (JsonProcessingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         model.addAttribute("scenario", temp);
         System.out.println(temp);
         return "testRun";
