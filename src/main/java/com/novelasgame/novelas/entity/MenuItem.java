@@ -13,6 +13,8 @@ public class MenuItem {
     
     private String choose;
     private ArrayList<Object> commands = new ArrayList<>();
+    
+    
     public MenuItem(String choose) {
         this.choose = choose;
     }
