@@ -16,7 +16,8 @@ import com.novelasgame.novelas.entity.Scene;
 @Service
 public class SceneService {
 
-    public byte[] getSceneByte(Scene scn) throws IOException {
+    public byte[] getSceneByte(Scene scn)  {
+        try {
         BufferedImage img;
         if (scn.getName().contains("black") || scn.getName().contains("null")) {
             img = new BufferedImage(300, 300, BufferedImage.TYPE_INT_ARGB);
@@ -34,7 +35,8 @@ public class SceneService {
         ImageIO.write(img, "PNG", baos);
         byte[] bytes = baos.toByteArray();
 
-        return bytes;
+        return bytes;}
+        catch(Exception ex) {return null;}
     }
 
 }

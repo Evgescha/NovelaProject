@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novelasgame.novelas.entity.Char;
 import com.novelasgame.novelas.entity.Command;
 import com.novelasgame.novelas.entity.Dialog;
@@ -18,55 +20,65 @@ import com.novelasgame.novelas.entity.Scene;
 import com.novelasgame.novelas.entity.Sound;
 import com.novelasgame.novelas.entity.Window;
 
-
 @Service
 public class LabelParserService {
 
-    public ArrayList<Object> list = new ArrayList<>();
+    private final ObjectMapper mapper = new ObjectMapper();
 
+    public ArrayList<Object> list = new ArrayList<>();
+    // для цикла
+    int i=0;
+    List<Command> commands = new ArrayList<>();
     @Autowired
     public GameService gameService;
 
-    public void Parse(String labelName) {
-        
-        labelName = "prologue";
+    public ArrayList<Object> Parse(String gameName, String labelName) {
+
+        // labelName = "prologue";
         list.clear();
-        System.out.println("search: "+labelName);
-        Game game = gameService.findByName("summer");
+        // System.out.println("search: " + labelName);
+        Game game = gameService.findByName(gameName);
         Label label = null;
-        for(Label lbl:game.getLabels()) {
-            if(lbl.getName().contains(labelName))label=lbl;
+
+        for (Label lbl : game.getLabels()) {
+            if (lbl.getName().contains(labelName))
+                label = lbl;
         }
-        List<Command> commands = label.getCommands();
+
+        commands = label.getCommands();
+
         String cmd = "";
-        for (int i = 0; i < commands.size(); i++) {
-            System.out.println("cmd:"+commands.get(i).getValue());
+        for (i = 0; i < commands.size(); i++) {
+//            System.out.println("cmd:" + commands.get(i).getValue());
             cmd = commands.get(i).getValue().trim();
             String[] arr = cmd.split(" ");
 
             if (arr[0].contains("menu")) {
-                i++;
-                Menu menu = new Menu();
-                cmd = commands.get(i).getValue().replace("\t", "    ");
-                while (cmd.charAt(0) == ' ') {
-                    System.out.println(cmd);
-                    if (cmd.charAt(4) != ' ') {
-                        menu.getItems().add(new MenuItem(cmd.trim()));
-                    } 
-                    else {
-                        menu.getItems().get(menu.getItems().size() - 1).getCommands().add(getCommand(cmd.trim()));
-                    }
-                    i++;
-                    cmd = commands.get(i).getValue().replace("\t", "    ");
-                }
-                i--;
-                list.add(menu);
-
+                list.add(getMenu(cmd));
             } else
                 list.add(getCommand(cmd));
 
         }
-        for(Object o:list)System.out.println(o);
+        // for(Object o:list)System.out.println(o);
+        return list;
+    }
+
+    public Object getMenu(String cmd) {
+        i++;
+        Menu menu = new Menu();
+        cmd = commands.get(i).getValue().replace("\t", "    ");
+        while (cmd.charAt(0) == ' ') {
+            // System.out.println(cmd);
+            if (cmd.charAt(4) != ' ') {
+                menu.getItems().add(new MenuItem(cmd.trim()));
+            } else {
+                menu.getItems().get(menu.getItems().size() - 1).getCommands().add(getCommand(cmd.trim()));
+            }
+            i++;
+            cmd = commands.get(i).getValue().replace("\t", "    ");
+        }
+        i--;
+        return menu;
     }
 
     public Object getCommand(String cmd) {
@@ -96,4 +108,11 @@ public class LabelParserService {
         return null;
     }
 
+    public String toJson(Object temp) {
+        try {
+            return mapper.writeValueAsString(temp);
+        } catch (JsonProcessingException e) {
+            return null;
+        }
+    }
 }

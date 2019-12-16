@@ -19,4 +19,6 @@ public class Command extends AbstractEntity {
     @ManyToMany(mappedBy = "commands", fetch = FetchType.EAGER)
     private List<Label> labels;
 
+    public Command() {}
+    public Command(String str) {this.value=str;}
 }
