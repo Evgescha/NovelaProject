@@ -13,6 +13,7 @@ import com.novelasgame.novelas.entity.Command;
 import com.novelasgame.novelas.entity.Dialog;
 import com.novelasgame.novelas.entity.Game;
 import com.novelasgame.novelas.entity.Hide;
+import com.novelasgame.novelas.entity.Jump;
 import com.novelasgame.novelas.entity.Label;
 import com.novelasgame.novelas.entity.Menu;
 import com.novelasgame.novelas.entity.MenuItem;
@@ -108,7 +109,9 @@ public class LabelParserService {
             return new Char(cmd);
         if(cmd.charAt(0) == '$' && (cmd.contains("=")  || cmd.contains("++") || cmd.contains("--") ) )
             return new Variables(cmd);
-
+        if(arr[0].contains("jump"))
+            return new Jump(cmd);
+        
         return null;
     }
 
