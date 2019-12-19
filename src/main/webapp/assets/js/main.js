@@ -41,19 +41,8 @@ function next() {
 		hide(temp);
 	else if (temp["type"] == "variable")
 		addVariable(temp);
-	else if (temp["type"] == "jump")
-		jump(temp);
 	i++;
 }
-
-//!!!!!!!!!!!!!!!!!!!!!!JUMP
-function jump(jmp){
-	console.log("label to jump: "+jmp["label"]);
-	location.href = "/runGame?gameName=summer&labelName="+jmp["label"];
-}
-
-
-
 
 // !!!!!!!!!!!!!!!!!!!!РАБОТА С ПЕРЕМЕННЫМИ
 // чтение переменных
