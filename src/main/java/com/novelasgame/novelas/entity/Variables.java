@@ -14,6 +14,7 @@ public class Variables {
     private final String type = "variable";
     private String key;
     private String value;
+    private String add;
 
     public Variables() {
     }
@@ -23,6 +24,11 @@ public class Variables {
         logger.log(Level.FINE, "Arguments: ", str);
         String arr[] = str.replace("$ ", "").split(" = ");
         key = arr[0];
+        if(!arr[1].contains(" "))
         value = arr[1];
+        else {
+            if(arr[1].contains(" + "))add = arr[1].split(" + ")[1];
+            else add="-"+arr[1].split(" - ")[1];
+        }
     }
 }

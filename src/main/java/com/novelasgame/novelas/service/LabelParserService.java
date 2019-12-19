@@ -18,6 +18,7 @@ import com.novelasgame.novelas.entity.Menu;
 import com.novelasgame.novelas.entity.MenuItem;
 import com.novelasgame.novelas.entity.Scene;
 import com.novelasgame.novelas.entity.Sound;
+import com.novelasgame.novelas.entity.Variables;
 import com.novelasgame.novelas.entity.Window;
 
 @Service
@@ -68,11 +69,12 @@ public class LabelParserService {
         Menu menu = new Menu();
         cmd = commands.get(i).getValue().replace("\t", "    ");
         while (cmd.charAt(0) == ' ') {
-            // System.out.println(cmd);
+             System.out.println("menu^^^"+cmd);
             if (cmd.charAt(4) != ' ') {
                 menu.getItems().add(new MenuItem(cmd.trim()));
             } else {
                 menu.getItems().get(menu.getItems().size() - 1).getCommands().add(getCommand(cmd.trim()));
+                System.out.println("menu^^^"+getCommand(cmd.trim()));
             }
             i++;
             cmd = commands.get(i).getValue().replace("\t", "    ");
@@ -102,8 +104,10 @@ public class LabelParserService {
         if (arr[0].contains("hide"))
             return new Hide(cmd);
 
-        if (arr.length > 5 && arr[1].charAt(0) != '"' && arr[0].charAt(0) != '"')
+        if (arr.length > 5 && arr[1].charAt(0) != '"' && arr[0].charAt(0) != '"' && arr[0].charAt(0) != '$')
             return new Char(cmd);
+        if(cmd.charAt(0) == '$' && (cmd.contains("=")  || cmd.contains("++") || cmd.contains("--") ) )
+            return new Variables(cmd);
 
         return null;
     }
