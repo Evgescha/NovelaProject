@@ -1,9 +1,11 @@
 package com.novelasgame.novelas.entity;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
-
 class VariablesTest {
     private Variables vrbl;
     @Test

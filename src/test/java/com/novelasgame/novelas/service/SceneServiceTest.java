@@ -3,6 +3,8 @@ package com.novelasgame.novelas.service;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

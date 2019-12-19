@@ -3,11 +3,14 @@ package com.novelasgame.novelas.entity;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
 public class Sound {
-    Logger logger = Logger.getLogger(Sound.class.getName());
+    @JsonIgnore
+        Logger logger = Logger.getLogger(Sound.class.getName());
     private final String type = "sound";
     private String folder;
     private String name;

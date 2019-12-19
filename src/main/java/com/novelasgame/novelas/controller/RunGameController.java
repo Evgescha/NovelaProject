@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.novelasgame.novelas.service.LabelParserService;
 
 @Controller
@@ -17,13 +16,13 @@ import com.novelasgame.novelas.service.LabelParserService;
 public class RunGameController {
     @Autowired
     LabelParserService labelParserService;
-    
-
 
     @GetMapping
-    private String getRunScene(@RequestParam(value = "gameName", required = true) String gameName, Model model){
+    private String getRunScene(@RequestParam(value = "gameName", required = true) String gameName,
+            @RequestParam(defaultValue = "prologue", required = false) String labelName, Model model) {
+
+        ArrayList<Object> parse = labelParserService.Parse(gameName, gameName + "_"+labelName);
         
-        ArrayList<Object> parse = labelParserService.Parse(gameName, gameName+"_prologue");
         model.addAttribute("scenario", labelParserService.toJson(parse));
         System.out.println("view scene runGame");
         return "runGame";

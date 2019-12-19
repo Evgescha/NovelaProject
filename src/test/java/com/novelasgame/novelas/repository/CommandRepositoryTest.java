@@ -1,19 +1,16 @@
 package com.novelasgame.novelas.repository;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.novelasgame.novelas.entity.Command;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

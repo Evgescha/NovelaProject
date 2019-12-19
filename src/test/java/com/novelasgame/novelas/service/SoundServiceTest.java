@@ -1,6 +1,8 @@
 package com.novelasgame.novelas.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -9,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.novelasgame.novelas.entity.Sound;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class SoundServiceTest {

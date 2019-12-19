@@ -3,10 +3,13 @@ package com.novelasgame.novelas.entity;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
 public class Scene {
+    @JsonIgnore
     static Logger logger = Logger.getLogger(Scene.class.getName());
     private final String type = "scene";
     private String folder = "null";

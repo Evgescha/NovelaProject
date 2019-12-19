@@ -20,53 +20,56 @@ function next() {
 	}
 	var temp = arr[i];
 	console.log(arr[i]);
+	
+	if (temp == null) {
+		while(temp==null){
+			i++;
+			temp = arr[i];
+		}
+	} 
 	if (temp["type"] == "char")
 		addChar(temp);
-	if (temp["type"] == "dialog")
+	else if (temp["type"] == "dialog")
 		addDialog(temp);
-	if (temp["type"] == "scene")
+	else if (temp["type"] == "scene")
 		addScene(temp);
-	if (temp["type"] == "sound")
+	else if (temp["type"] == "sound")
 		addSound(temp);
-	if (temp["type"] == "window")
+	else if (temp["type"] == "window")
 		windowww(temp);
-	if (temp["type"] == "hide")
+	else if (temp["type"] == "hide")
 		hide(temp);
-	if (temp["type"] == "variable")
+	else if (temp["type"] == "variable")
 		addVariable(temp);
 	i++;
 }
 
-
-
-
-//!!!!!!!!!!!!!!!!!!!!РАБОТА С ПЕРЕМЕННЫМИ
+// !!!!!!!!!!!!!!!!!!!!РАБОТА С ПЕРЕМЕННЫМИ
 // чтение переменных
 function addVariable(vrbl) {
-	console.log("Add variable "+vrbl["key"]+":"+vrbl["value"]);
+	console.log("Add variable " + vrbl["key"] + ":" + vrbl["value"]);
 	variables.set(vrbl["key"], vrbl["value"]);
 }
 // изменение переменной на заданное значение
-function updateNumericVariable( key,  value){
-	console.log("Update variable "+key+", old:"+variables[key]+", add:"+value);
+function updateNumericVariable(key, value) {
+	console.log("Update variable " + key + ", old:" + variables[key] + ", add:"
+			+ value);
 	var val = variables.get(key);
-		val = Number.parseInt(val); // Теперь будет числом
-		variables.set(key, val+value);
-		console.log("new value: "+variables.get(key));
-// if (val.match(/^\d+$/)) {
-// }
+	val = Number.parseInt(val); // Теперь будет числом
+	variables.set(key, val + value);
+	console.log("new value: " + variables.get(key));
+	// if (val.match(/^\d+$/)) {
+	// }
 }
 // изменение не числовых переменных
-function updateNonNumericVariable( key,  value){
-	console.log("Update variable "+key+", old:"+variables[key]+", to:"+value);
+function updateNonNumericVariable(key, value) {
+	console.log("Update variable " + key + ", old:" + variables[key] + ", to:"
+			+ value);
 	variables.set(key, value);
-	console.log("new value: "+variables.get(key));
+	console.log("new value: " + variables.get(key));
 }
 
-
-
-
-//!!!!!!!!!!!!!РАБОТА С ДИАЛОГОВЫМ ОКНОМ
+// !!!!!!!!!!!!!РАБОТА С ДИАЛОГОВЫМ ОКНОМ
 // показ и сокрытие окна диалога
 function windowww(wnd) {
 	if (wnd["show"] == true) {
@@ -80,9 +83,7 @@ function windowww(wnd) {
 	}
 }
 
-
-
-//!!!!!!!!!!!!РАБОТА С АУДИО
+// !!!!!!!!!!!!РАБОТА С АУДИО
 function addSound(snd) {
 	console.log("add sound");
 	if (snd["play"] == true) {
@@ -154,10 +155,7 @@ function soundVolumeDown(vol) {
 	}
 }
 
-
-
-
-//!!!!!!!!!!РАБОТА С ФОНОМ
+// !!!!!!!!!!РАБОТА С ФОНОМ
 // выводим сцену на экран
 function addScene(scn) {
 	console.log("add Scene");
@@ -167,9 +165,7 @@ function addScene(scn) {
 	$(".sprite").remove();
 }
 
-
-
-//!!!!!!!!!!!!!!РАБОТА С ДИАЛОГОМ
+// !!!!!!!!!!!!!!РАБОТА С ДИАЛОГОМ
 // начать вывод диалога на экран
 function addDialog(dlg) {
 	console.log("add dialog");
@@ -191,10 +187,7 @@ function nextDialog(dlg) {
 	dialogCurrent++;
 }
 
-
-
-
-//!!!!!!!!!!!!РАБОТА С СПРАЙТОМ
+// !!!!!!!!!!!!РАБОТА С СПРАЙТОМ
 // добавляем персонажа на экран
 function addChar(chr) {
 	console.log("add char");
@@ -209,15 +202,13 @@ function addChar(chr) {
 		$(".sprites").append(div);
 }
 
-//удаление персонажей с экрана
+// удаление персонажей с экрана
 function hide(hd) {
-	console.log("Char "+hd["name"]+" hide");
+	console.log("Char " + hd["name"] + " hide");
 	$("." + hd["name"]).remove();
 }
 
-
-
-//!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!
 // получение пути по entity
 // !!!!позже обновить до передачи параметров не в строке
 function objectToUrl(obj, url) {

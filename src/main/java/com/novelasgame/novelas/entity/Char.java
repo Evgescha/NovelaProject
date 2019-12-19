@@ -8,11 +8,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 
 @Data
 public class Char {
+    @JsonIgnore  
     static Logger logger = Logger.getLogger(Char.class.getName());
     private final String type = "char";
     private String name;

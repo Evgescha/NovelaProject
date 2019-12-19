@@ -2,8 +2,9 @@ package com.novelasgame.novelas.entity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import javax.transaction.Transactional;
 
+import org.junit.jupiter.api.Test;
 class SceneTest {
     private Scene scene;
 

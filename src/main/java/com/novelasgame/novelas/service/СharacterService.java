@@ -43,7 +43,8 @@ public class СharacterService {
             byte[] bytes = baos.toByteArray();
 
             return bytes;
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) {
             return null;
         }
     }

@@ -3,10 +3,13 @@ package com.novelasgame.novelas.entity;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
 public class Window {
+@JsonIgnore
     static Logger logger = Logger.getLogger(Window.class.getName());
     private final String type = "window";
     private boolean show = true;

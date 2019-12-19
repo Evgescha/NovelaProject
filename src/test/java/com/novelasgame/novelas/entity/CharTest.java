@@ -1,10 +1,9 @@
 package com.novelasgame.novelas.entity;
-import static org.junit.Assert.*;
-
 import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.Test;
+import javax.transaction.Transactional;
 
+import org.junit.jupiter.api.Test;
 class CharTest {
     private Char chr;
 
