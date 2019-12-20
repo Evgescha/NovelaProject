@@ -10,7 +10,8 @@ var intervalUp, intervalDown;
 
 // массив переменных
 var variables = new Map();
-
+//переменная, хранящая действия при выборе пунктов меню
+var menus;
 // кнопка дальше по сценарию
 function next() {
 	// если не завершили предыдущий диалог
@@ -18,6 +19,9 @@ function next() {
 		nextDialog(arr[i - 1]);
 		return;
 	}
+//	if(arrMenu.length>0){
+//		
+//	}
 	var temp = arr[i];
 	console.log(arr[i]);
 	
@@ -27,6 +31,13 @@ function next() {
 			temp = arr[i];
 		}
 	} 
+	parse(temp);
+	i++;
+	
+}
+
+//!!!!!!!!!!!!!!!!!!!!!!Parse
+function parse(temp){
 	if (temp["type"] == "char")
 		addChar(temp);
 	else if (temp["type"] == "dialog")
@@ -45,16 +56,31 @@ function next() {
 		jump(temp);
 	else if (temp["type"] == "menu")
 		menu(temp);
-	i++;
-	
 }
 
 
 //!!!!!!!!!!!!!!!!!Menu
-function menu(menu){
+function menu(mn){
+	console.log("add menu");
+	menus = mn;
+	var menuFront = $(".menuChoose");
+	var liS = "";
+	for(let j=0; j<mn.items.length;j++){
+		liS+="<li onclick='menuItem("+j+")'>"+mn.items[j].choose+"</li>"
+	}
+	menuFront.html(liS);
+	$(".menu").css("display","block");
 	
 }
 
+function menuItem(index){
+	arr= arr.slice(i);
+	i=0;
+	console.log(arr);
+	arr=menus.items[index].commands.concat(arr);
+	$(".menu").css("display","none");
+	$(".window").removeClass("hide").addClass("show");
+}
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!JUMP
 function jump(jmp){
 	console.log("Go to label: "+jmp["label"]);
