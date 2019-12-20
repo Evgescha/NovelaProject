@@ -41,8 +41,26 @@ function next() {
 		hide(temp);
 	else if (temp["type"] == "variable")
 		addVariable(temp);
+	else if (temp["type"] == "jump")
+		jump(temp);
+	else if (temp["type"] == "menu")
+		menu(temp);
 	i++;
+	
 }
+
+
+//!!!!!!!!!!!!!!!!!Menu
+function menu(menu){
+	
+}
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!JUMP
+function jump(jmp){
+	console.log("Go to label: "+jmp["label"]);
+	document.location.href ="/runGame?gameName=summer&labelName="+jmp["label"];
+}
+
 
 // !!!!!!!!!!!!!!!!!!!!РАБОТА С ПЕРЕМЕННЫМИ
 // чтение переменных
