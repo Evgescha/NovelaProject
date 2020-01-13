@@ -38,7 +38,7 @@ public class LabelParserService {
 
         // labelName = "prologue";
         list.clear();
-         System.out.println("search: " + labelName);
+//         System.out.println("search: " + labelName);
         Game game = gameService.findByName(gameName);
         Label label = null;
 //        System.out.println(game.getName());
