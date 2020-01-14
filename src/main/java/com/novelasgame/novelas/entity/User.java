@@ -15,7 +15,7 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-public class User {
+public class User extends AbstractEntity{
     
     @Column
     private String login;
