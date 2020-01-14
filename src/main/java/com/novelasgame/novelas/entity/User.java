@@ -27,6 +27,9 @@ public class User {
     @JsonIgnore
     private String password;
     
+    @Column
+    private UserGame userGames;
+    
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     @JsonIgnore
     private Collection<Role> roleList;
