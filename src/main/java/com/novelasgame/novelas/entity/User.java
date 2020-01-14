@@ -30,6 +30,9 @@ public class User {
     @Column
     private UserGame userGames;
     
+    @Column
+    private String avatar="default.png";
+    
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     @JsonIgnore
     private Collection<Role> roleList;
