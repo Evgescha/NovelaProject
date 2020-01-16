@@ -1,5 +1,7 @@
 package com.novelasgame.novelas.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +15,10 @@ public class UserServiceImpl implements CrudService<User> {
     private final static String DEFAULT_ROLE = "ROLE_USER";
     
     @Autowired
-    UserRepository repository;
+    private UserRepository repository;
 
     @Autowired
-    RoleServiceImpl roleService;
+    private RoleServiceImpl roleService;
 
     @Override
     public boolean create(User entity) {
@@ -64,8 +66,8 @@ public class UserServiceImpl implements CrudService<User> {
             return false;
 
         try {
+            entity.getRoles().add(new Role(DEFAULT_ROLE));
             create(entity);
-            roleService.create(new Role(DEFAULT_ROLE,entity));            
             return true;
         } catch (Exception e) {
             return false;

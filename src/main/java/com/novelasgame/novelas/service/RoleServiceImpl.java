@@ -1,10 +1,12 @@
 package com.novelasgame.novelas.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.novelasgame.novelas.entity.Role;
 import com.novelasgame.novelas.repository.RoleRepository;
 
+@Service
 public class RoleServiceImpl implements CrudService<Role>{
 
     @Autowired
