@@ -48,5 +48,8 @@ public class RoleServiceImpl implements CrudService<Role>{
             return false;
         }
     }
+    public Role findByName(String name) {
+        return repository.findByNameIgnoreCase(name);
+    }
 
 }

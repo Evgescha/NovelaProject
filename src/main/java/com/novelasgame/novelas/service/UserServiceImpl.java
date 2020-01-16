@@ -1,6 +1,6 @@
 package com.novelasgame.novelas.service;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +26,7 @@ public class UserServiceImpl implements CrudService<User> {
             repository.saveAndFlush(entity);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -41,6 +42,7 @@ public class UserServiceImpl implements CrudService<User> {
             repository.saveAndFlush(entity);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -51,6 +53,7 @@ public class UserServiceImpl implements CrudService<User> {
             repository.deleteById(id);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -66,10 +69,21 @@ public class UserServiceImpl implements CrudService<User> {
             return false;
 
         try {
-            entity.getRoles().add(new Role(DEFAULT_ROLE));
-            create(entity);
+            if(roleService.findByName(DEFAULT_ROLE)==null)
+                roleService.create(new Role(DEFAULT_ROLE));
+            
+            User user = new User();
+            user.setAvatar(entity.getAvatar());
+            user.setEmail(entity.getEmail());
+            user.setLogin(entity.getLogin());
+            user.setPassword(entity.getPassword());
+            user.setRoles(Arrays.asList(roleService.findByName(DEFAULT_ROLE)));
+//            entity.getRoles().add(new Role(DEFAULT_ROLE));
+            create(user);
+            user=null;
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }

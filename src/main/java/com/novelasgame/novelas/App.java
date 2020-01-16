@@ -66,7 +66,6 @@ public class App {
         System.out.println("Hello World!");
         
         
-        
         User user = new User();
         user.setLogin("FirstUser");
         user.setEmail("111mail1");      
@@ -74,12 +73,12 @@ public class App {
         userServiceImpl.userRegistration(user);
         
         
-        User user1 = new User();
-        user1.setLogin("SecondUser");
-        user1.setEmail("222mail1");      
-        user1.setPassword("222Pssword");
-        user1.getRoles().add(new Role("ROLE_ADMIN"));
-        userServiceImpl.userRegistration(user1);
+//        User user1 = new User();
+//        user1.setLogin("SecondUser");
+//        user1.setEmail("222mail1");      
+//        user1.setPassword("222Pssword");
+//        user1.getRoles().add(new Role("ROLE_ADMIN"));
+//        userServiceImpl.userRegistration(user1);
         
         System.out.println("Users added");
     }

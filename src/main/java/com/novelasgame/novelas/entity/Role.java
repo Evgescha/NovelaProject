@@ -13,25 +13,26 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-public class Role extends AbstractEntity{
+public class Role extends AbstractEntity {
 
     @Column(unique = true)
     private String name;
-    
+
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users = new ArrayList<User>();
-    
-    public Role(String name) {
+
+    public Role(final String name) {
         super();
         this.name = name;
     }
-    
-    public Role(String name, ArrayList<User> users) {
+
+    public Role(final String name, final Collection<User> users) {
         super();
         this.name = name;
         this.users = users;
     }
-    
-    public Role() {}
-    
+
+    public Role() {
+        super();
+    }
 }

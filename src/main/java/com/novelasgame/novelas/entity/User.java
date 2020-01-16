@@ -1,6 +1,5 @@
 package com.novelasgame.novelas.entity;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -10,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -21,34 +21,36 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-public class User extends AbstractEntity{
-    
+public class User extends AbstractEntity {
+
     @Column
     private String login;
-    
+
     @Column
     private String email;
-    
+
     @Column
     @JsonIgnore
     private String password;
-    
+
     @Column
-    private String avatar="default.png";
-    
+    private String avatar = "default.png";
+
 //    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 //    @Fetch(value = FetchMode.SUBSELECT)
 //    private Collection<UserGame> userGames;
-    
-    @ManyToMany(cascade = {CascadeType.ALL})
+
     @JsonIgnore
     @Fetch(value = FetchMode.SUBSELECT)
-    @JoinTable(
-            name="user_role",
-            joinColumns = @JoinColumn(name="user_id"),
-            inverseJoinColumns = @JoinColumn(name ="role_id")
-            )
-    private Collection<Role> roles = new ArrayList<Role>();
+    @ManyToMany(cascade = { CascadeType.PERSIST })
+    @JoinTable(name = "user_role",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id"),
+        uniqueConstraints = @UniqueConstraint(
+                name="UK_users_roles",
+                columnNames = {"user_id", "role_id"})
+    )
+    private Collection<Role> roles;
 
     public User(String login) {
         super();
@@ -58,8 +60,5 @@ public class User extends AbstractEntity{
     public User() {
         super();
     }
-    
-    
-    
-    
+
 }

@@ -1,41 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Р”РѕР±Р°РІРёС‚СЊ СЃС†РµРЅР°СЂРёР№</title>
-<style type="text/css">
-form {
-	display: flex;
-	flex-direction: column;
-	width: 400px;
-	margin: auto;
-}
-
-.gameName, .gameLabel, .gameCommands {
-	display: flex;
-	flex-direction: column;
-}
-.gameCommands textarea{
-height: 300px;
-}
-</style>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{commons :: head}">
 </head>
 <body>
 	<div class="container">
 		<form action="/add" method="POST">
 			<div class="gameName">
-				<p>РќР°Р·РІР°РЅРёРµ РёРіСЂС‹</p>
+				<p>Название игры</p>
 				<input type="text" name="gameName">
 			</div>
 			<div class="gameLabel">
-				<p>РќР°Р·РІР°РЅРёРµ РјРµС‚РєРё</p>
+				<p>Название метки</p>
 				<input type="text" name="gameLabel">
 			</div>
 			<div class="gameCommands">
-				<p>РЎРїРёСЃРѕРє РєРѕРјРјР°РЅРґ</p>
+				<p>Список комманд</p>
 				<textarea type="text" name="gameCommands"></textarea>
 			</div>
-			<button type="submit">РћС‚РїСЂР°РІРёС‚СЊ</button>
+			<button type="submit">Отправить</button>
 		</form>
 	</div>
 </body>
