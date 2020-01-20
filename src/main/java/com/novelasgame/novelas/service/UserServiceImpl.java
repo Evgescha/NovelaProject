@@ -72,15 +72,16 @@ public class UserServiceImpl implements CrudService<User> {
             if(roleService.findByName(DEFAULT_ROLE)==null)
                 roleService.create(new Role(DEFAULT_ROLE));
             
-            User user = new User();
-            user.setAvatar(entity.getAvatar());
-            user.setEmail(entity.getEmail());
-            user.setLogin(entity.getLogin());
-            user.setPassword(entity.getPassword());
-            user.setRoles(Arrays.asList(roleService.findByName(DEFAULT_ROLE)));
+//            User user = new User();
+//            user.setAvatar(entity.getAvatar());
+//            user.setEmail(entity.getEmail());
+//            user.setLogin(entity.getLogin());
+//            user.setPassword(entity.getPassword());
+            create(entity);
+            entity.setRoles(Arrays.asList(roleService.findByName(DEFAULT_ROLE)));
 //            entity.getRoles().add(new Role(DEFAULT_ROLE));
-            create(user);
-            user=null;
+            update(entity);
+//            user=null;
             return true;
         } catch (Exception e) {
             e.printStackTrace();
