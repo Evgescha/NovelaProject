@@ -16,7 +16,6 @@ import com.novelasgame.novelas.service.GameService;
 import com.novelasgame.novelas.service.LabelService;
 import com.novelasgame.novelas.service.RoleServiceImpl;
 import com.novelasgame.novelas.service.UserServiceImpl;
-import com.sun.tools.javac.code.Attribute.Array;
 
 /**
  * Hello world!
@@ -68,15 +67,11 @@ public class App {
         System.out.println("Hello World!");
         
         
-        User user = userServiceImpl.findByLogin("FirstUser");
-        Role role = roleServiceImpl.findByName("ROLE_ADMIN");
-        System.out.println(role);
-        user.getRoles().add(role);
-        userServiceImpl.update(user);
-        //        userServiceImpl.userRegistration(user);
-        
-        
-        
+//        User user = new User();
+//        user.setEmail("MyMail");
+//        user.setLogin("MyLogin");
+//        user.setPassword("MyPass");
+//        userServiceImpl.userRegistration(user);
         
         
         System.out.println("Users added");
