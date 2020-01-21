@@ -1,6 +1,8 @@
 package com.novelasgame.novelas.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -64,6 +66,14 @@ public class User extends AbstractEntity {
 
     public User() {
         super();
+    }
+    
+    public List<String> getRoleListNames() {
+        List<String> roleNames = new ArrayList<>();
+        for (Role currRole : getRoles()) {
+            roleNames.add(currRole.getName());
+        }
+        return roleNames;
     }
 
 }

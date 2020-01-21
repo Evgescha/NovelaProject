@@ -1,19 +1,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Start page</title>
+<title>Registration</title>
 <head>
 <body>
-	<section id="login">
-		<form action="" method="post">
-			<div>Login / Mail</div>
-			<input type="text" name="login" placeholder="Login" required>
-			<div>Password</div>
-			<input type="password" name="password" placeholder="password" required>
-			<button type="submit">LogIn</button>
-		</form>
-	</section>
 	<section id="reg">
-		<form action="/registration" method="post">
+		<form class="regForm" action="/registration" method="post">
 			<div>Login</div>
 			<input type="text" name="login" placeholder="Login" required>
 			<div>Email</div>
@@ -23,5 +14,6 @@
 			<button type="submit">Registration</button>
 		</form>
 	</section>
+	
 </body>
 <html />
