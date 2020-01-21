@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -25,13 +26,16 @@ import lombok.Data;
 public class User extends AbstractEntity {
 
     @Column
+    @NotNull
     private String login;
 
     @Column
+    @NotNull
     private String email;
 
     @Column
     @JsonIgnore
+    @NotNull
     private String password;
 
     @Column
@@ -48,7 +52,7 @@ public class User extends AbstractEntity {
         joinColumns = @JoinColumn(name = "user_id"),
         inverseJoinColumns = @JoinColumn(name = "role_id"),
         uniqueConstraints = @UniqueConstraint(
-                name="UK_users_roles",
+                name="users_roles",
                 columnNames = {"user_id", "role_id"})
     )
     private Collection<Role> roles;

@@ -72,8 +72,8 @@ public class App {
 //        user.setLogin("MyLogin");
 //        user.setPassword("MyPass");
 //        userServiceImpl.userRegistration(user);
+//        System.out.println("Users added");
         
         
-        System.out.println("Users added");
     }
 }

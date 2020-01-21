@@ -1,4 +1,4 @@
-package com.novelasgame.novelas;
+package com.novelasgame.novelas.config;
 
 
 import org.springframework.context.annotation.Bean;
