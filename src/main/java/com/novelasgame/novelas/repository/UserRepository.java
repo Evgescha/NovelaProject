@@ -6,6 +6,6 @@ import com.novelasgame.novelas.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     
-    User findByLoginIgnoreCase(String login);  
+    User findByUsernameIgnoreCase(String username);  
     User findByEmailIgnoreCase(String email);  
 }

@@ -7,18 +7,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.novelasgame.novelas.entity.User;
 import com.novelasgame.novelas.service.UserServiceImpl;
 
-@Controller("/registration")
+@Controller
+@RequestMapping("/registration")
 public class RegisterController {
 
     @Autowired
     UserServiceImpl userService;
 
-    @Autowired
-    BCryptPasswordEncoder encoder;
+//    @Autowired
+//    BCryptPasswordEncoder encoder;
     
     @GetMapping
     public String getRegistratinForm() {
@@ -27,7 +29,7 @@ public class RegisterController {
 
     @PostMapping
     public String setRegistrationForm(Model model, @ModelAttribute User user) {
-        user.setPassword(encoder.encode(user.getPassword()));
+//        user.setPassword(encoder.encode(user.getPassword()));
         boolean success = userService.userRegistration(user);
         String response = success ? "Success registration" : "Registration failed";
         model.addAttribute("success", response);

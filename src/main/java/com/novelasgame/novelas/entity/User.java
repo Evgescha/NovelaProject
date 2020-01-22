@@ -29,7 +29,7 @@ public class User extends AbstractEntity {
 
     @Column
     @NotNull
-    private String login;
+    private String username;
 
     @Column
     @NotNull
@@ -59,9 +59,9 @@ public class User extends AbstractEntity {
     )
     private Collection<Role> roles;
 
-    public User(String login) {
+    public User(String username) {
         super();
-        this.login = login;
+        this.username = username;
     }
 
     public User() {

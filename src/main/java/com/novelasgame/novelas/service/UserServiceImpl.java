@@ -58,30 +58,22 @@ public class UserServiceImpl implements CrudService<User> {
         }
     }
 
-    public User findByLogin(String login) {
-        return repository.findByLoginIgnoreCase(login);
+    public User findByUsername(String username) {
+        return repository.findByUsernameIgnoreCase(username);
     }
 
     public boolean userRegistration(User entity) {
 
-        if (repository.findByLoginIgnoreCase(entity.getLogin()) != null
+        if (repository.findByUsernameIgnoreCase(entity.getUsername()) != null
                 || repository.findByEmailIgnoreCase(entity.getEmail()) != null)
             return false;
 
         try {
             if(roleService.findByName(DEFAULT_ROLE)==null)
                 roleService.create(new Role(DEFAULT_ROLE));
-            
-//            User user = new User();
-//            user.setAvatar(entity.getAvatar());
-//            user.setEmail(entity.getEmail());
-//            user.setLogin(entity.getLogin());
-//            user.setPassword(entity.getPassword());
             create(entity);
             entity.setRoles(Arrays.asList(roleService.findByName(DEFAULT_ROLE)));
-//            entity.getRoles().add(new Role(DEFAULT_ROLE));
             update(entity);
-//            user=null;
             return true;
         } catch (Exception e) {
             e.printStackTrace();
