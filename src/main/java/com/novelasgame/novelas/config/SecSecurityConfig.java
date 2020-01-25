@@ -36,8 +36,8 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
           .csrf().disable()
           .authorizeRequests()
           .antMatchers("/admin/**").hasRole("ADMIN")
-          .antMatchers("/anonymous*").anonymous()
-          .antMatchers("/login*", "/registration", "/h2-console","/h2-console*/**").permitAll()
+          .antMatchers("/login").anonymous()
+//          .antMatchers("/login*").permitAll()
           .anyRequest().authenticated()
           .and()
           .formLogin()
@@ -45,12 +45,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
           .loginProcessingUrl("/perform_login")
           .defaultSuccessUrl("/", true)
           .failureUrl("/login?error=true")
-//          .failureHandler("login?error=true")
           .and()
           .logout()
-          .logoutUrl("/perform_logout")
+          .logoutUrl("/logout")
+          .logoutSuccessUrl("/login")
           .deleteCookies("JSESSIONID");
-//          .logoutSuccessHandler(logoutSuccessHandler());
     }
      
     @Bean

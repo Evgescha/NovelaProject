@@ -19,20 +19,11 @@ public class RegisterController {
     @Autowired
     UserServiceImpl userService;
 
-//    @Autowired
-//    BCryptPasswordEncoder encoder;
-    
-    @GetMapping
-    public String getRegistratinForm() {
-        return "registration";
-    }
-
     @PostMapping
     public String setRegistrationForm(Model model, @ModelAttribute User user) {
-//        user.setPassword(encoder.encode(user.getPassword()));
         boolean success = userService.userRegistration(user);
         String response = success ? "Success registration" : "Registration failed";
         model.addAttribute("success", response);
-        return "redirect:/registration";
+        return "redirect:/login";
     }
 }

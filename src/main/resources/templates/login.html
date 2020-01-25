@@ -1,25 +1,63 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Login</title>
-
 <head>
-<body>
-	<section id="login">
-		<form name='f' action="/perform_login" method="POST">
-			<table>
-				<tr>
-					<td>User:</td>
-					<td><input type='text' name='username' value=''></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='password' /></td>
-				</tr>
-				<tr>
-					<td><input name="submit" type="submit" value="submit" /></td>
-				</tr>
-			</table>
-		</form>
+<style type="text/css">
+#logReg {
+	background: #ffffff5c;
+	position: absolute;
+	left: 20%;
+	top: 20%;
+}
+</style>
+</head>
+
+<body
+	style="background: url('StartPage.jpg') 50% 0 no-repeat fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+
+	<section id="logReg">
+		<div id="login">
+			<form name='f' action="/perform_login" method="POST">
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td><input type='text' name='username' value=''></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type='password' name='password' /></td>
+					</tr>
+					<tr>
+						<td><input name="submit" type="submit" value="submit" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div id="reg">
+			<form class="regForm" action="/registration" method="post">
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td><input type="text" name="username" placeholder="Login"
+							required></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input type="email" name="email"
+							placeholder="your.email@box.com" required></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" name="password"
+							placeholder="password" required></td>
+					</tr>
+
+					<tr>
+						<td><button type="submit">Registration</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
 	</section>
 </body>
 <html />
