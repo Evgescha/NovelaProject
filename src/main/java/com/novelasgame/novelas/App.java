@@ -69,8 +69,8 @@ public class App {
         
 //        User user = new User();
 //        user.setEmail("MyMail");
-//        user.setLogin("MyLogin");
-//        user.setPassword("MyPass");
+//        user.setUsername("2222");
+//        user.setPassword("2222");
 //        userServiceImpl.userRegistration(user);
 //        System.out.println("Users added");
         

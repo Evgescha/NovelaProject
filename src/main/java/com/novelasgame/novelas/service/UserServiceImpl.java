@@ -3,6 +3,7 @@ package com.novelasgame.novelas.service;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.novelasgame.novelas.entity.Role;
@@ -19,6 +20,8 @@ public class UserServiceImpl implements CrudService<User> {
 
     @Autowired
     private RoleServiceImpl roleService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public boolean create(User entity) {
@@ -67,7 +70,7 @@ public class UserServiceImpl implements CrudService<User> {
         if (repository.findByUsernameIgnoreCase(entity.getUsername()) != null
                 || repository.findByEmailIgnoreCase(entity.getEmail()) != null)
             return false;
-
+        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         try {
             if(roleService.findByName(DEFAULT_ROLE)==null)
                 roleService.create(new Role(DEFAULT_ROLE));
