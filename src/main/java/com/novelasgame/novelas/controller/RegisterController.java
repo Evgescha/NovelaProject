@@ -19,11 +19,18 @@ public class RegisterController {
     @Autowired
     UserServiceImpl userService;
 
+    @GetMapping
+    public String getRegistration() {
+        return "login";
+    }
+    
     @PostMapping
     public String setRegistrationForm(Model model, @ModelAttribute User user) {
+        System.out.println("start registration");
         boolean success = userService.userRegistration(user);
         String response = success ? "Success registration" : "Registration failed";
+        System.out.println("registration users: "+response);
         model.addAttribute("success", response);
-        return "redirect:/login";
+        return "login";
     }
 }

@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -43,9 +44,10 @@ public class User extends AbstractEntity {
     @Column
     private String avatar = "default.png";
 
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-//    @Fetch(value = FetchMode.SUBSELECT)
-//    private Collection<UserGame> userGames;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
+//    @JsonIgnore
+    private Collection<UserGame> userGames;
 
     @JsonIgnore
     @Fetch(value = FetchMode.SELECT)
