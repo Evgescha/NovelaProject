@@ -21,10 +21,9 @@ public class UserGame extends AbstractEntity{
     @Column
     private String name;
     
-//    @ElementCollection
-//    @MapKeyColumn(name="user_game")
-//    @Column
-//    private Map<String,String> values;
+    @ElementCollection
+    @Column
+    private Map<String,String> keyVal;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

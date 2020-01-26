@@ -1,6 +1,7 @@
 package com.novelasgame.novelas;
 
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
@@ -9,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.novelasgame.novelas.entity.Role;
 import com.novelasgame.novelas.entity.User;
+import com.novelasgame.novelas.entity.UserGame;
 import com.novelasgame.novelas.service.CommandService;
 import com.novelasgame.novelas.service.GameService;
 import com.novelasgame.novelas.service.LabelService;
 import com.novelasgame.novelas.service.RoleServiceImpl;
+import com.novelasgame.novelas.service.UserGameServiceImpl;
 import com.novelasgame.novelas.service.UserServiceImpl;
 
 /**
@@ -40,15 +42,16 @@ public class App {
 
     
     
-    private static UserServiceImpl userServiceImpl;
     private static RoleServiceImpl roleServiceImpl;
+    private static UserServiceImpl userServiceImpl;
+    private static UserGameServiceImpl userGameServiceImpl;
     
+    @Autowired
+    private RoleServiceImpl roleServiceImpl2;
     @Autowired
     private UserServiceImpl userServiceImpl2;
     @Autowired
-    private RoleServiceImpl roleServiceImpl2;
-    
-    
+    private UserGameServiceImpl userGameServiceImpl2;
 
     @PostConstruct
     public void init() {
@@ -56,8 +59,10 @@ public class App {
         this.labelService = this.labelService0;
         this.commandService = this.commandService0;
         
-        this.userServiceImpl = this.userServiceImpl2;
         this.roleServiceImpl = this.roleServiceImpl2;
+        this.userServiceImpl = this.userServiceImpl2;
+        this.userGameServiceImpl = this.userGameServiceImpl2;
+        
     }
 
     public static void main(String[] args) {
@@ -65,6 +70,22 @@ public class App {
         SpringApplication.run(App.class, args);
 
         System.out.println("Hello World!");
+        
+//        User user = userServiceImpl.findByUsername("3");
+//        UserGame game = new UserGame();
+//        game.setName("summer");
+//        
+//        HashMap<String,String> map = new HashMap();
+//        map.put("first", "1");
+//        map.put("second", "22");
+//        map.put("third", "333");
+//        game.setKeyVal(map);
+//        userGameServiceImpl.create(game);
+//        game.setUser(user);
+//        
+//        user.getUserGames().add(game);
+//        userServiceImpl.update(user);
+        
         
         
 //        User user = new User();
