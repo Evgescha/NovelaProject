@@ -1,5 +1,7 @@
 package com.novelasgame.novelas.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +49,10 @@ public class GameService implements CrudService<Game> {
         }
     }
     public Game findByName(String name) {
-        return repository.findByName(name);
+        return repository.findByNameIgnoreCase(name);
+    }
+
+    public List<Game> findAll() {
+        return repository.findAll();
     }
 }

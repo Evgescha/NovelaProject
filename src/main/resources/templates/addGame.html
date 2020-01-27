@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add new Game</title>
+<meta charset="UTF-8">
+</head>
+<body>
+    <h2 th:text="${isCreate}"></h2>
+	<div class="container">
+		<form action="/addGame" method="POST">
+			<div class="name">
+				<p>Short name, 1 word</p>
+				<input type="text" name="name">
+			</div>
+			<div class="originalName">
+				<p>Full name</p>
+				<input type="text" name="originalName">
+			</div>
+			<div class="description">
+				<p>Description</p>
+				<textarea type="text" name="description"></textarea>
+			</div>
+			<button type="submit">Send</button>
+		</form>
+	</div>
+
+	<section class="oldGames">
+		<h4>Games</h4>
+		<table border="1">
+			<tr th:each="game:${games}">
+				<td th:text="${game.name}"></td>
+				<td th:text="${game.originalName}"></td>
+				<td th:text="${game.description}"></td>
+			</tr>
+		</table>
+	</section>
+</body>
+</html>
