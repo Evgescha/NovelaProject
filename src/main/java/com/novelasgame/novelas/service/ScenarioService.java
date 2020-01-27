@@ -20,9 +20,10 @@ public class ScenarioService {
         Game game = null;
         game = gameService.findByName(sc.getGameName());
         if (game == null) {
-            game = new Game();
-            game.setName(sc.getGameName());
-            game.setLabels(new ArrayList<Label>());;
+            return;
+//            game = new Game();
+//            game.setName(sc.getGameName());
+//            game.setLabels(new ArrayList<Label>());;
         }
 
         Label label = null;

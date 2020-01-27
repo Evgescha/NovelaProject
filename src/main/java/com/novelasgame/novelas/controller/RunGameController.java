@@ -19,7 +19,7 @@ public class RunGameController {
 
     @GetMapping
     private String getRunScene(@RequestParam(value = "gameName", required = true) String gameName,
-            @RequestParam(defaultValue = "prologue", required = false) String labelName, Model model) {
+            @RequestParam(defaultValue = "default", required = false) String labelName, Model model) {
 
         ArrayList<Object> parse = labelParserService.Parse(gameName, gameName + "_"+labelName);
         

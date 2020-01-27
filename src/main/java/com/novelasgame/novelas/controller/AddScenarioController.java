@@ -11,7 +11,7 @@ import com.novelasgame.novelas.entity.Scenario;
 import com.novelasgame.novelas.service.ScenarioService;
 
 @Controller
-@RequestMapping("/add")
+@RequestMapping("/addScenario")
 public class AddScenarioController {
     
     @Autowired
