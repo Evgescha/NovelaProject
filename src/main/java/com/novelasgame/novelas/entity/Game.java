@@ -20,7 +20,16 @@ public class Game extends AbstractEntity {
     
     @Column(unique = true)
     private String name;
+    
+    @Column
+    private String originalName;
+    
+    @Column
+    private String avatar="default.png";
 
+    @Column(length=1000)
+    private String description;
+    
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "game_label", joinColumns = { @JoinColumn(name = "gameID") }, inverseJoinColumns = {
             @JoinColumn(name = "labelID") })
