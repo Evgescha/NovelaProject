@@ -21,7 +21,7 @@ public class RunGameController {
     private String getRunScene(@RequestParam(value = "gameName", required = true) String gameName,
             @RequestParam(defaultValue = "default", required = false) String labelName, Model model) {
 
-        ArrayList<Object> parse = labelParserService.Parse(gameName, gameName + "_"+labelName);
+        ArrayList<Object> parse = labelParserService.Parse(gameName, labelName);
         
         model.addAttribute("scenario", labelParserService.toJson(parse));
         System.out.println("view scene runGame");

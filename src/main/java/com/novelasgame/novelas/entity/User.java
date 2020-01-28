@@ -46,7 +46,6 @@ public class User extends AbstractEntity {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     @Fetch(value = FetchMode.SUBSELECT)
-//    @JsonIgnore
     private Collection<UserGame> userGames;
 
     @JsonIgnore

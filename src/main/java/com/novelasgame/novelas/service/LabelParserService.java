@@ -41,10 +41,14 @@ public class LabelParserService {
 //         System.out.println("search: " + labelName);
         Game game = gameService.findByName(gameName);
         Label label = null;
-//        System.out.println(game.getName());
+//        System.out.println("gameName: "+game.getName());
+//        System.out.println("gameLabels:"+game.getLabels());
         for (Label lbl : game.getLabels()) {
-            if (lbl.getName().contains(labelName))
+//            System.out.println(lbl.getName() + "    " + labelName);
+            if (lbl.getName().equalsIgnoreCase(labelName)) {
                 label = lbl;
+                break;
+            }
         }
 
         commands = label.getCommands();
