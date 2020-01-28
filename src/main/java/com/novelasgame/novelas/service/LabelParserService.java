@@ -29,7 +29,7 @@ public class LabelParserService {
 
     public ArrayList<Object> list = new ArrayList<>();
     // для цикла
-    int i=0;
+    int i = 0;
     List<Command> commands = new ArrayList<>();
     @Autowired
     public GameService gameService;
@@ -74,15 +74,18 @@ public class LabelParserService {
         Menu menu = new Menu();
         cmd = commands.get(i).getValue().replace("\t", "    ");
         while (cmd.charAt(0) == ' ') {
-//             System.out.println("menu^^^"+cmd);
+            System.out.println("menu^^^" + cmd);
             if (cmd.charAt(4) != ' ') {
                 menu.getItems().add(new MenuItem(cmd.trim()));
             } else {
                 menu.getItems().get(menu.getItems().size() - 1).getCommands().add(getCommand(cmd.trim()));
-//                System.out.println("menu^^^"+getCommand(cmd.trim()));
+                System.out.println("menu^^^" + getCommand(cmd.trim()));
             }
             i++;
-            cmd = commands.get(i).getValue().replace("\t", "    ");
+            if (commands.size() > i)
+                cmd = commands.get(i).getValue().replace("\t", "    ");
+            else
+                break;
         }
         i--;
         return menu;
@@ -111,11 +114,11 @@ public class LabelParserService {
 
         if (arr.length > 5 && arr[1].charAt(0) != '"' && arr[0].charAt(0) != '"' && arr[0].charAt(0) != '$')
             return new Char(cmd);
-        if(cmd.charAt(0) == '$' && (cmd.contains("=")  || cmd.contains("++") || cmd.contains("--") ) )
+        if (cmd.charAt(0) == '$' && (cmd.contains("=") || cmd.contains("++") || cmd.contains("--")))
             return new Variables(cmd);
-        if(arr[0].contains("jump"))
+        if (arr[0].contains("jump"))
             return new Jump(cmd);
-        
+
         return null;
     }
 
