@@ -35,16 +35,10 @@ public class LabelParserService {
     public GameService gameService;
 
     public ArrayList<Object> Parse(String gameName, String labelName) {
-
-        // labelName = "prologue";
         list.clear();
-//         System.out.println("search: " + labelName);
         Game game = gameService.findByName(gameName);
         Label label = null;
-//        System.out.println("gameName: "+game.getName());
-//        System.out.println("gameLabels:"+game.getLabels());
         for (Label lbl : game.getLabels()) {
-//            System.out.println(lbl.getName() + "    " + labelName);
             if (lbl.getName().equalsIgnoreCase(labelName)) {
                 label = lbl;
                 break;
@@ -55,7 +49,6 @@ public class LabelParserService {
 
         String cmd = "";
         for (i = 0; i < commands.size(); i++) {
-//            System.out.println("cmd:" + commands.get(i).getValue());
             cmd = commands.get(i).getValue().trim();
             String[] arr = cmd.split(" ");
 
@@ -72,14 +65,14 @@ public class LabelParserService {
     public Object getMenu(String cmd) {
         i++;
         Menu menu = new Menu();
+//            System.out.println("menu:" + cmd);
         cmd = commands.get(i).getValue().replace("\t", "    ");
         while (cmd.charAt(0) == ' ') {
-            System.out.println("menu^^^" + cmd);
             if (cmd.charAt(4) != ' ') {
                 menu.getItems().add(new MenuItem(cmd.trim()));
             } else {
                 menu.getItems().get(menu.getItems().size() - 1).getCommands().add(getCommand(cmd.trim()));
-                System.out.println("menu^^^" + getCommand(cmd.trim()));
+                System.out.println("menu chooser: " + getCommand(cmd.trim()));
             }
             i++;
             if (commands.size() > i)
