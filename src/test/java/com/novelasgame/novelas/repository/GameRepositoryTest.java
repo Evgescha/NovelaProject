@@ -21,7 +21,7 @@ class GameRepositoryTest {
     @Test
     void findByName() {
         //ищем сущность Game, передав методу имя
-        Game game = repository.findByName("summer");
+        Game game = repository.findByNameIgnoreCase("summer");
         //проверяем, нашли ли мы сущность с нужным нам именем
         assertEquals(game.getName(), "summer");
     }
