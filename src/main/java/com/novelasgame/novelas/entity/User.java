@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Entity
-@Table
+@Table(name = "myUsers")
 @Data
 public class User extends AbstractEntity {
 
