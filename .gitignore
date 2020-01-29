@@ -4,4 +4,4 @@
 /.project
 *.log
 /*.gz
-/gameRes/*
+/gameRes/**
