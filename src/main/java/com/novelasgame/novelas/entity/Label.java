@@ -31,7 +31,7 @@ public class Label extends AbstractEntity {
     private List<Game> games;
 
     @Fetch(value = FetchMode.SELECT)
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "label_command", joinColumns = { @JoinColumn(name = "labelID") }, inverseJoinColumns = {
             @JoinColumn(name = "commandID") })
     private List<Command> commands;

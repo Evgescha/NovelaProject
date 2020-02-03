@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">>
+
 <head>
 <title>Add new Game</title>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
-    <h2 th:text="${isCreate}"></h2>
+	<h2 th:text="${isCreate}"></h2>
 	<div class="container">
 		<form action="/addGame" method="POST">
 			<div class="name">
@@ -24,15 +27,29 @@
 		</form>
 	</div>
 
-	<section class="oldGames">
+<!-- 	<section class="oldGames"> -->
+<!-- 		<table border="1"> -->
+<!-- 			<tr th:each="game:${games}"> -->
+<!-- 				<td th:text="${game.name}"></td> -->
+<!-- 				<td th:text="${game.originalName}"></td> -->
+<!-- 				<td th:text="${game.description}"></td> -->
+<!-- 			</tr> -->
+<!-- 		</table> -->
+<!-- 	</section> -->
+
+	<section id="games">
 		<h4>Games</h4>
-		<table border="1">
-			<tr th:each="game:${games}">
-				<td th:text="${game.name}"></td>
-				<td th:text="${game.originalName}"></td>
-				<td th:text="${game.description}"></td>
-			</tr>
-		</table>
+		<div class="gamesItem" th:each="game:${games}">
+			<div class="infoLeft">
+				<img src="StartPage.jpg" class="itemImage">
+				<button class="itemPlay">Играть</button>
+				<button class="itemRemove" >Удалить</button>
+			</div>
+			<div class="infoRight">
+				<p class="itemName" th:text="${game.name}">Название</p>
+				<p class="itemDesc" th:text="${game.description}">Описание</p>
+			</div>
+		</div>
 	</section>
 </body>
 </html>

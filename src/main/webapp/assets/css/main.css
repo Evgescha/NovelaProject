@@ -72,7 +72,7 @@ body {
 	position: fixed;
 	/*     top: 0%; */
 }
-/* близко */
+
 .close {
 	transform: scale(1.5);
 	position: fixed;
@@ -124,10 +124,12 @@ body {
 	margin: 25px;
 	list-style-type: none;
 }
-.menuChoose li:hover{
-	color:black;
+
+.menuChoose li:hover {
+	color: black;
 	background: #f0cbcb;
 }
+
 .audio {
 	display: none;
 }
@@ -140,16 +142,14 @@ body {
 	display: block;
 }
 
+/* ADD GAMES */
+.gamesItem {
+	width: 600px;
+	border: 1px solid;
+	margin: 0 auto;
+	display: flex;
+}
 
-
-
-
-
-/* REGISTRATION_PAGE */
-
-
-
-
-
-
-
+.infoLeft, .itemImage {
+	width: 400px;
+}

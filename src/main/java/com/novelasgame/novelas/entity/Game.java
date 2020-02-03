@@ -37,7 +37,7 @@ public class Game extends AbstractEntity {
     private String description;
     
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "game_label", joinColumns = { @JoinColumn(name = "gameID") }, inverseJoinColumns = {
             @JoinColumn(name = "labelID") })
     private List<Label> labels;
