@@ -19,28 +19,34 @@ import com.novelasgame.novelas.service.GameService;
 import com.novelasgame.novelas.service.UserServiceImpl;
 
 @Controller
-@RequestMapping("/addGame")
-public class addGameController {
+@RequestMapping("/games")
+public class GameController {
 
     @Autowired
     GameService gameService;
-    
 
-    @GetMapping
+    @GetMapping()
     public String getGameController(Model model, @RequestParam(name = "isCreate", required = false) String isCreate) {
         List<Game> games = gameService.findAll();
         if (!games.isEmpty())
             model.addAttribute("games", games);
         if (isCreate != null)
-            model.addAttribute("isCreate", isCreate);
+            model.addAttribute("notification", isCreate);
         return "addGame";
     }
 
-    @PostMapping()
+    @PostMapping("/addGame")
     private String postGameController(@ModelAttribute Game game, RedirectAttributes ra, Principal principal) {
-        boolean isCreate = gameService.addGame(game, principal.getName());        
-        ra.addAttribute("isCreate", "Success added - " + isCreate);
-        return "redirect:/addGame";
+        boolean isCreate = gameService.addGame(game, principal.getName());
+        ra.addAttribute("notification", "Success added - " + isCreate);
+        return "redirect:/games";
+    }
+
+    @GetMapping("/deleteGame")
+    private String getDeleteGame(@RequestParam(name = "gameId", required = true) long gameId, RedirectAttributes ra) {
+        boolean delete = gameService.delete(gameId);
+        ra.addAttribute("notification", "Success: " + delete);
+        return "redirect:/games";
     }
 
 }
