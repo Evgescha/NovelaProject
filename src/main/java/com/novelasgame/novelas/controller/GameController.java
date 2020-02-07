@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.novelasgame.novelas.entity.Game;
-import com.novelasgame.novelas.entity.User;
 import com.novelasgame.novelas.service.GameService;
-import com.novelasgame.novelas.service.UserServiceImpl;
 
 @Controller
 @RequestMapping("/games")
