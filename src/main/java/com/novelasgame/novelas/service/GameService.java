@@ -23,6 +23,9 @@ public class GameService implements CrudService<Game> {
             User user = userService.findByUsername(username);
             user.getGames().add(entity);
             userService.update(user);
+            
+            entity.setUser(user);
+            repository.saveAndFlush(entity);
             return true;
         }else return false;
     }

@@ -34,8 +34,7 @@
 			<div class="infoLeft">
 				<img src="StartPage.jpg" class="itemImage"> 
 				<a class="itemPlay" th:href="@{/runGame(gameName=${game.name},labelName='default')}">Play</a>
-				<a class="itemRemove" th:href="@{/games/deleteGame(gameId=${game.id})}" th:if="${game.id == 1}">Delete</a>
-				<div th:text="${#authorization.user.name}">s</div>
+				<a class="itemRemove" th:href="@{/games/deleteGame(gameId=${game.id})}" >Delete</a>
 			</div>
 			<div class="infoRight">
 				<p class="itemName" th:text="${game.originalName}">Name</p>

@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,12 +36,14 @@ public class GameController {
 
     @PostMapping("/addGame")
     private String postGameController(@ModelAttribute Game game, RedirectAttributes ra, Principal principal) {
+        System.out.println("gamSer:"+gameService);
         boolean isCreate = gameService.addGame(game, principal.getName());
         ra.addAttribute("notification", "Success added - " + isCreate);
         return "redirect:/games";
     }
 
     @GetMapping("/deleteGame")
+    @PreAuthorize("hasPermission(#gameId, hasRole('ROLE_ADMIN'))")
     private String getDeleteGame(@RequestParam(name = "gameId", required = true) long gameId, RedirectAttributes ra) {
         boolean delete = gameService.delete(gameId);
         ra.addAttribute("notification", "Success: " + delete);

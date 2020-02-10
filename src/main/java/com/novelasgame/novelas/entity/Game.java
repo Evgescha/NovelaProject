@@ -12,17 +12,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.novelasgame.novelas.repository.DropEntity;
 
 import lombok.Data;
 
 @Data
 @Table
 @Entity
-public class Game extends AbstractEntity {
+public class Game extends AbstractEntity implements DropEntity{
     
     @Column(unique = true)
     private String name;
@@ -45,5 +43,17 @@ public class Game extends AbstractEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Override
+    public String getOwnerUsername() {
+        return user.getUsername();
+    }
+
+    @Override
+    public String toString() {
+        return "Game [name=" + name + ", originalName=" + originalName + ", avatar=" + avatar + ", description="
+                + description + ", labels=" + labels + "]";
+    }
+    
 
 }
