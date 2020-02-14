@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Resources</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+	<section id="res_selection">
+		<div>Select the game</div>
+		<select id="res_gameSelect">
+			<option th:value="${game.name}" th:each="game:${games}"
+				th:text="${game.name}">GameName</option>
+		</select>
+
+		<div>Select resources type</div>
+		<select id="res_typeResSelect">
+			<option value="backgroundImages">BackgroundImages</option>
+			<option value="specialImages">SpecialImages</option>
+			<option value="characterImages">Characters</option>
+			<option value="musicSound">MusicSound</option>
+			<option value="sfxSound">SfxSound</option>
+			<option value="ambienceSound">AmbienceSound</option>
+		</select>
+	</section>
+	<section id="res_forUpload"></section>
+	<section id="res_uploaded"></section>
+
+</body>
+</html>
