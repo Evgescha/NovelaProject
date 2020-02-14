@@ -1,5 +1,6 @@
 package com.novelasgame.novelas.entity;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,6 +41,10 @@ public class Game extends AbstractEntity implements DropEntity{
     @JoinTable(name = "game_label", joinColumns = { @JoinColumn(name = "gameID") }, inverseJoinColumns = {
             @JoinColumn(name = "labelID") })
     private List<Label> labels;
+    
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="game", cascade=CascadeType.ALL)
+    private Collection<ResourceItem> resourceItems;
+    
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

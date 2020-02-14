@@ -107,8 +107,10 @@ public class LabelParserService {
 
         if (arr.length > 5 && arr[1].charAt(0) != '"' && arr[0].charAt(0) != '"' && arr[0].charAt(0) != '$')
             return new Char(cmd);
+        
         if (cmd.charAt(0) == '$' && (cmd.contains("=") || cmd.contains("++") || cmd.contains("--")))
             return new Variables(cmd);
+        
         if (arr[0].contains("jump"))
             return new Jump(cmd);
 
