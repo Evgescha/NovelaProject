@@ -43,7 +43,7 @@ public class GameController {
     }
 
     @GetMapping("/deleteGame")
-    @PreAuthorize("hasPermission(#gameId, hasRole('ROLE_ADMIN'))")
+//    @PreAuthorize("hasPermission(#gameId, hasRole('ROLE_ADMIN'))")
     private String getDeleteGame(@RequestParam(name = "gameId", required = true) long gameId, RedirectAttributes ra) {
         boolean delete = gameService.delete(gameId);
         ra.addAttribute("notification", "Success: " + delete);
