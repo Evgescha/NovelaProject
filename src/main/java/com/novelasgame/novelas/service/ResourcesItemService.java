@@ -3,6 +3,7 @@ package com.novelasgame.novelas.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.novelasgame.novelas.entity.Game;
 import com.novelasgame.novelas.entity.ResourceItem;
 import com.novelasgame.novelas.repository.ResourcesItemRepository;
 
@@ -47,4 +48,12 @@ public class ResourcesItemService implements CrudService<ResourceItem> {
         }
     }
 
+    
+    public ResourceItem findByType(String type) {
+        return repository.findByType(type);
+    }
+
+    public ResourceItem findByGame(Game game) {
+        return repository.findByGame(game);
+    }
 }
